@@ -1,0 +1,92 @@
+*************** personal Account **************
+First name:
+John
+Last name:
+Doe
+Email ID:
+sb-43bkps2884499@personal.example.com
+System Generated Password:
+21DxY$H9
+Password:
+Change password
+Note: If your system generated password is changed, your new password will not be displayed because of one-way password encryption.
+Phone Number:
+2545794850
+Account type:
+Personal
+Account ID:
+C3M9UFWWKFXHQ
+Status:
+Verified
+Country:
+KE
+
+Bank Account
+Account Number:
+56631983617
+Routing Number:
+325272063
+Credit Card
+Credit Card Number:
+4642994581990637
+Credit Card Type:
+VISA
+Expiration Date:
+09/2025
+PayPal
+Balance:
+10000000.00 USD
+
+
+////////////////////////////////////////////////
+
+*************** Business Account **************
+First name:
+John
+Last name:
+Doe
+Email ID:
+sb-j88zf2897652@business.example.com
+System Generated Password:
+0Es[1<Jl
+0Es[1<Jl
+
+Password:
+Change password
+Note: If your system generated password is changed, your new password will not be displayed because of one-way password encryption.
+Phone Number:
+2544590986
+Account type:
+Business
+Account ID:
+FKAGJ8WE8787J
+Status:
+Verified
+Country:
+KE
+
+Credentials:
+NVP/SOAP Sandbox API Credentials
+Username:
+sb-j88zf2897652_api1.business.example.com
+Password:
+H53VKVU57FUF3XVN
+Signature:
+AJDydjphV9zi3AXAVzkLe0ALWVzCAZH4Ksf832iJa-r4n6vP54HxVjmu
+
+
+Bank Account
+Account Number:
+314603847546903
+Routing Number:
+325272063
+Credit Card
+Credit Card Number:
+4951342293755689
+Credit Card Type:
+VISA
+Expiration Date:
+09/2025
+PayPal
+Balance:
+5000.00 USD
