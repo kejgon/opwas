@@ -24,12 +24,8 @@
         <!-- PAYPAL INTERGRATION -->
         <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
             <input type="hidden" name="cmd" value="_cart">
-            <input type="hidden" name="business" value="sb-j88zf2897652@business.example.com">
-
-            <input type="hidden" name="currency_code" value="US">
-
-
-
+            <input type="hidden" name="business" value="sb-lqzux2863387@business.example.com">
+            <input type="hidden" name="upload" value="1">
             <table class="table table-striped checkout-table">
                 <thead>
                     <tr>
@@ -46,8 +42,6 @@
                     <?php cart(); ?>
                 </tbody>
             </table>
-
-
 
             <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif" border="0" name="upload" alt="PayPal - The safer, easier way to pay online!">
 
