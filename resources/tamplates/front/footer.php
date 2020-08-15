@@ -2,6 +2,11 @@
 
     <hr>
 
+
+    <a class="scroll-to-top rounded SmoothmyTop" style="display: inline;">
+        <i class="glyphicon glyphicon-chevron-up"></i> <!-- <button type="button" class="SmoothmyTop">Click to Smooth Scroll to Top</button> -->
+    </a>
+
     <!-- Footer -->
     <footer>
         <div class="row">
@@ -20,6 +25,7 @@
 <!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.min.js"></script>
 <script src="js/custom.js"></script>
+<script src="js/jqueryCustom.js"></script>
 
 
 </body>

@@ -43,8 +43,7 @@
                 </tbody>
             </table>
 
-            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif" border="0" name="upload" alt="PayPal - The safer, easier way to pay online!">
-
+            <?php echo show_paypal(); ?>
         </form>
 
 

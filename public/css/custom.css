@@ -159,3 +159,21 @@ box-shadow:1px 3px 5px rgba(0, 0, 0, 0.26);
       text-align: left;
      
   }
+
+
+  .scroll-to-top {
+    position: fixed;
+    right: 2rem;
+    bottom: 2rem;
+    display: none;
+    width: 3.75rem;
+    height: 2.85rem;
+    text-align: center;
+    color: #fff;
+    background: #337ab7;
+    line-height: 31px;
+
+}
+.rounded {
+    border-radius: .35rem!important;
+}

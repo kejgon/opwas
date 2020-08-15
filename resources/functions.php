@@ -120,7 +120,7 @@ function get_Drug_Category()
                             <h4 class="pull-right"> Ksh {$row['drug_price']}</h4>
                             <h4><a href="item.php?id={$row['drug_id']}">{$row['drug_name']}</a></h4>
                             <p>{$row['drug_short_description']}</p>
-                            <a class="btn btn-primary" target="_blank" href="item.php?id={$row['drug_id']}">ADD TO CART</a>
+                            <a class="btn btn-primary"  href="cart.php?add={$row['drug_id']}">ADD TO CART</a>
                         </div>
                     </div>
                 </div>
@@ -147,7 +147,7 @@ function get_Drugs_In_Shop()
                             <h4 class="pull-right"> Ksh {$row['drug_price']}</h4>
                             <h4><a href="item.php?id={$row['drug_id']}">{$row['drug_name']}</a></h4>
                             <p>{$row['drug_short_description']}</p>
-                            <a class="btn btn-primary" target="_blank" href="item.php?id={$row['drug_id']}">ADD TO CART</a>
+                            <a class="btn btn-primary" href="cart.php?add={$row['drug_id']}">ADD TO CART</a>
                         </div>
                     </div>
                 </div>
@@ -174,6 +174,8 @@ function login_User()
             set_Message("Your username or  password are incorrect!");
             redirect("login.php");
         } else {
+
+            $_SESSION['username'] = $username;
             //set_Message("Welcome to Admin panel" . $username);
             redirect("admin");
         }

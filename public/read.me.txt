@@ -14,3 +14,12 @@ System Generated Password:
 
 
 tx=499459845&amt=343.44&cc=USA&st=COMPLETE
+
+
+/////////////////////////////////////////////
+Safaricom Sanbox Details
+test's Keys
+Consumer Key	W79dAMMn7GBJQOA8pjUlBiknCz6rW635
+Consumer Secret	nWIGpkzXtFCqkw2q
+Key Issued	Wed, 08/12/2020 - 00:22
+Expires	Never
