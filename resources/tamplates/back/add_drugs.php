@@ -3,8 +3,8 @@
     <div class="row">
         <h1 class="page-header">
             Add Drugs
-
         </h1>
+        <p class="bg-success"><?php display_Message(); ?></p>
     </div>
 
 
@@ -64,47 +64,47 @@
             </div>
 
 
-            <!-- Product Categories-->
+            <!-- Drug Categories-->
 
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label for="drug_category">Drug Category</label>
                 <hr>
-                <select name="drug_category" id="" class="form-control">
+                <select name="drug_category_id" id="" class="form-control">
                     <option value="">Select Category</option>
-
                 </select>
-
-
+            </div> -->
+            <div class="form-group">
+                <label for="drug_category">Drug Category</label>
+                <input type="number" name="drug_category_id" class="form-control">
             </div>
 
 
 
 
 
-            <!-- Product Brands-->
+            <!-- Drug Brands-->
 
-
+            <!-- 
             <div class="form-group">
                 <label for="drug_brand">Drug Brand</label>
                 <select name="drug_brand" id="" class="form-control">
                     <option value="">Select Brand</option>
                 </select>
-            </div>
+            </div> -->
 
 
-            <!-- Product Tags -->
+            <!-- Drug Tags -->
 
 
             <div class="form-group">
-                <label for="drug_tags">Drug Keywords</label>
-                <hr>
-                <input type="text" name="drug_tags" class="form-control">
+                <label for="drug_quantity">Drug Quantity</label>
+                <input type="number" name="drug_quantity" class="form-control">
             </div>
 
-            <!-- Product Image -->
+            <!-- Drug Image -->
             <div class="form-group">
-                <label for="drug_img">Drugt Image</label>
-                <input type="file" name="file">
+                <label for="image">Drugt Image</label>
+                <input type="file" name="image" value="">
 
             </div>
 
@@ -113,6 +113,6 @@
         </aside>
         <!--SIDEBAR-->
 
-
+        <?php add_drugs(); ?>
 
     </form>

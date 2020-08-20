@@ -5,35 +5,28 @@
 
         </h1>
     </div>
+    <p class="text-center bg-success"><?php display_Message(); ?>
+        <div class="row">
+            <table class="table table-hover">
+                <thead>
 
-    <div class="row">
-        <table class="table table-hover">
-            <thead>
+                    <tr>
+                        <th>Id</th>
+                        <!-- <th>Title</th> -->
+                        <th>Amount</th>
+                        <th>transaction</th>
+                        <th>Currency</th>
+                        <th>Status</th>
+                        <th>Delete</th>
 
-                <tr>
-                    <th>S.N</th>
-                    <th>Title</th>
-                    <th>Photo</th>
-                    <th>Quantity</th>
-                    <th>Invoice Number</th>
-                    <th>Order Date</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>21</td>
-                    <td>Nikon 234</td>
+                    </tr>
+                </thead>
+                <tbody>
 
-                    <td><img src="http://placehold.it/62x62" alt=""></td>
-                    <td>Cameras</td>
-                    <td>456464</td>
-                    <td>Jun 2039</td>
-                    <td>Completed</td>
-                </tr>
+                    <?php display_Orders(); ?>
 
 
-            </tbody>
-        </table>
-    </div>
+                </tbody>
+            </table>
+        </div>
 </div>

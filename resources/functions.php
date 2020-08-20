@@ -3,6 +3,12 @@
 
 ////! CUSTOM FUNCTIONS
 
+function last_id()
+{
+    global $connection;
+    return mysqli_insert_id($connection);
+}
+
 function set_Message($msg)
 {
     if (!empty($msg)) {
@@ -79,7 +85,7 @@ function get_Drugs()
                             <h4 class="pull-right"> Ksh {$row['drug_price']}</h4>
                             <h4><a href="item.php?id={$row['drug_id']}">{$row['drug_name']}</a></h4>
                             <p>{$row['drug_short_description']}</p>
-                            <a class="btn btn-primary"  href="cart.php?add={$row['drug_id']}">ADD TO CART</a>
+                            <a class="btn btn-primary"  href="../resources/cart.php?add={$row['drug_id']}">ADD TO CART</a>
                         </div>
                     </div>
                 </div>
@@ -107,7 +113,7 @@ function get_Categories()
 function get_Drug_Category()
 {
 
-    $query = query("SELECT * FROM drugs WHERE drug_category_id = " . escape_string($_GET['id']) . " ");
+    $query = query("SELECT * FROM drugs WHERE drug_category_id = " . escape_string($_GET['id']) . "");
     confirm($query);
 
     while ($row = fetch_Array($query)) {
@@ -120,7 +126,7 @@ function get_Drug_Category()
                             <h4 class="pull-right"> Ksh {$row['drug_price']}</h4>
                             <h4><a href="item.php?id={$row['drug_id']}">{$row['drug_name']}</a></h4>
                             <p>{$row['drug_short_description']}</p>
-                            <a class="btn btn-primary"  href="cart.php?add={$row['drug_id']}">ADD TO CART</a>
+                            <a class="btn btn-primary"  href="../resources/cart.php?add={$row['drug_id']}">ADD TO CART</a>
                         </div>
                     </div>
                 </div>
@@ -147,7 +153,7 @@ function get_Drugs_In_Shop()
                             <h4 class="pull-right"> Ksh {$row['drug_price']}</h4>
                             <h4><a href="item.php?id={$row['drug_id']}">{$row['drug_name']}</a></h4>
                             <p>{$row['drug_short_description']}</p>
-                            <a class="btn btn-primary" href="cart.php?add={$row['drug_id']}">ADD TO CART</a>
+                            <a class="btn btn-primary" href="../resources/cart.php?add={$row['drug_id']}">ADD TO CART</a>
                         </div>
                     </div>
                 </div>
@@ -182,6 +188,9 @@ function login_User()
     }
 }
 
+
+
+
 function send_Message()
 {
     if (isset($_POST['submit'])) {
@@ -204,4 +213,98 @@ function send_Message()
 }
 
 
+
+
+
 ////!------------------------  BACK-END FUNCTIONS --------------------------------- ////
+
+
+//??******************* ORDERS *********************??/
+function display_Orders()
+{
+    $query = query("SELECT * FROM orders");
+    confirm($query);
+
+    while ($row = fetch_Array($query)) {
+
+        $orders = <<<HEREDOC
+        <tr>
+            <td>{$row['order_id']}</td>
+            <td>{$row['order_amount']}</td>
+            <td>{$row['order_transaction']}</td>
+            <td>{$row['order_currency']}</td>
+            <td>{$row['order_status']}</td>
+            <td><a class="btn btn-danger" href="../../resources/tamplates/back/delete_orders.php?id={$row['order_id']}"><span class="glyphicon glyphicon-remove"></span></td>
+        </tr>
+        HEREDOC;
+
+        echo $orders;
+    }
+}
+
+
+//??******************* DRUGS *********************??/
+function display_all_drug()
+{
+    $query = query("SELECT * FROM drugs");
+    confirm($query);
+
+    while ($row = fetch_Array($query)) {
+
+        $drugs = <<<HEREDOC
+        <tr>
+            <td>{$row['drug_id']}</td>
+            <td>
+            {$row['drug_name']}<br>
+            <a href="index.php?edit_drug&id={$row['drug_id']}"> <img src="{$row['drug_image']}" alt="" width="70"></a>
+            </td>
+            <td>{$row['drug_short_description']}</td>
+            <td>{$row['drug_description']}</td>
+            <td>{$row['drug_category_id']}</td>
+            <td>{$row['drug_price']}</td>
+            <td>{$row['drug_quantity']}</td>
+            <td><a class="btn btn-danger" href="../../resources/tamplates/back/delete_drug.php?id={$row['drug_id']}"><span class="glyphicon glyphicon-remove"></span></td>
+            <td><a class="btn btn-warn" href="index.php?edit_drug&id={$row['drug_id']}"><span class="glyphicon glyphicon-edit"></span></td>
+        </tr>
+        HEREDOC;
+
+        echo $drugs;
+    }
+}
+
+//??******************* ADDING DRUGS *********************??/
+function add_drugs()
+{
+    if (isset($_POST['publish'])) {
+
+        $drug_name = escape_string($_POST['drug_name']);
+        $drug_short_desc = escape_string($_POST['drug_short_descr']);
+        $drug_description = escape_string($_POST['drug_description']);
+        $drug_price = escape_string($_POST['drug_price']);
+        $drug_quantity = escape_string($_POST['drug_quantity']);
+        $drug_category_id = escape_string($_POST['drug_category_id']);
+        // $drug_image = escape_string($_FILES['img']['name']);
+        // $drug_image_temp_location = escape_string($_FILES['img']['tmp_name']);
+        $image = escape_string($_FILES['image']['name']);;
+        // Get text
+        move_uploaded_file($_FILES['image']['tmp_name'], 'uploads/' . $_FILES['image']['name']);
+
+        // image file directory
+        // $target = "uploads/" . basename($image);
+
+
+        if (move_uploaded_file($_FILES['image']['tmp_name'], 'uploads/' . basename($_FILES['image']['name']))) {
+            $msg = "Image uploaded successfully";
+        } else {
+            $msg = "Failed to upload image";
+        }
+
+        $inert_drug = query("INSERT INTO drugs(drug_name, drug_category_id, drug_price, drug_quantity, drug_short_description, drug_description,drug_image) VALUES('{$drug_name}','{$drug_category_id}','{$drug_price}','{$drug_quantity}','{$drug_short_desc}','{$drug_description}','{$image}')");
+        confirm($inert_drug);
+        set_Message($msg);
+        redirect("index.php?drugs");
+
+
+        // $drug_tag = escape_string($_POST['drug_tasg']);
+    }
+}

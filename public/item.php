@@ -50,7 +50,7 @@
 
                             <form action="">
                                 <div class="form-group">
-                                    <a href="cart.php?add=<?php echo $row['drug_id']; ?>" class="btn btn-primary"> Buy now</a>
+                                    <a href="../resources/cart.php?add=<?php echo $row['drug_id']; ?>" class="btn btn-primary"> Buy now</a>
                                 </div>
                             </form>
 

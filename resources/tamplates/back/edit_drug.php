@@ -2,7 +2,7 @@
 
     <div class="row">
         <h1 class="page-header">
-            Edit Product
+            Edit Drug
 
         </h1>
     </div>

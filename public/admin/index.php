@@ -8,6 +8,7 @@
 
 <?php
 
+// SETTING USERS ACCORDING TO CONDITIONS
 if (!isset($_SESSION['username'])) {
 
     redirect("../../public");
@@ -18,19 +19,7 @@ if (!isset($_SESSION['username'])) {
 
     <div class="container-fluid">
 
-        <!-- Page Heading -->
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">
-                    Dashboard <small>Statistics Overview</small>
-                </h1>
-                <ol class="breadcrumb">
-                    <li class="active">
-                        <i class="fa fa-dashboard"></i> Dashboard
-                    </li>
-                </ol>
-            </div>
-        </div>
+
         <!-- /.row -->
 
 
@@ -54,6 +43,10 @@ if (!isset($_SESSION['username'])) {
 
         if (isset($_GET['add_drugs'])) {
             include("../../resources/tamplates/back/add_drugs.php");
+        }
+
+        if (isset($_GET['edit_drug'])) {
+            include("../../resources/tamplates/back/edit_drug.php");
         }
 
         if (isset($_GET['categories'])) {

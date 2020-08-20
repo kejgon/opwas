@@ -170,10 +170,12 @@ box-shadow:1px 3px 5px rgba(0, 0, 0, 0.26);
     height: 2.85rem;
     text-align: center;
     color: #fff;
-    background: #337ab7;
+    background: #2193b0;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #6dd5ed, #2193b0);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #6dd5ed, #2193b0); 
     line-height: 31px;
 
 }
 .rounded {
-    border-radius: .35rem!important;
+    border-radius: 100%!important;
 }

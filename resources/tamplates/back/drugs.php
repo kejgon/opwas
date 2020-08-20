@@ -4,32 +4,33 @@
         All Drugs
 
     </h1>
-    <table class="table table-hover">
+    <p class="text-center bg-success"><?php display_Message(); ?>
+
+        <table class="table table-hover">
 
 
-        <thead>
+            <thead>
 
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Category</th>
-                <th>Price</th>
-            </tr>
-        </thead>
-        <tbody>
+                <tr>
+                    <th>Id</th>
+                    <th>Drug name</th>
+                    <th>Drug brif Descr</th>
+                    <th>Drug description</th>
+                    <th>Drug category Id</th>
+                    <th>Drug price</th>
+                    <th>Drug quantity</th>
+                    <th>Delete</th>
+                    <th>Edite</th>
 
-            <tr>
-                <td>20</td>
-                <td>Nikon 234 <br>
-                    <img src="http://placehold.it/62x62" alt="">
-                </td>
-                <td>Category</td>
-                <td>123</td>
-            </tr>
+                </tr>
+            </thead>
+            <tbody>
 
+                <?php display_all_drug(); ?>
 
 
-        </tbody>
-    </table>
+
+            </tbody>
+        </table>
 
 </div>

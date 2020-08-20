@@ -16,3 +16,4 @@ defined("DB_NAME") ? null : define("DB_NAME", "opwas");
 $connection = mysqli_connect(DB_HOST, DB_USER, DB_PASSWARD, DB_NAME);
 
 require_once("functions.php"); //now this file is going to be avaible anytime we include it anywhere
+require_once("cart.php"); //now this file is going to be avaible anytime we include it anywhere
