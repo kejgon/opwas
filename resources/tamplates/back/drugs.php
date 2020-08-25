@@ -16,11 +16,11 @@
                     <th>Drug name</th>
                     <th>Drug brif Descr</th>
                     <th>Drug description</th>
-                    <th>Drug category Id</th>
+                    <th>Drug category </th>
                     <th>Drug price</th>
                     <th>Drug quantity</th>
                     <th>Delete</th>
-                    <th>Edite</th>
+                    <th>Edit</th>
 
                 </tr>
             </thead>

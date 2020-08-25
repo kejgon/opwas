@@ -64,20 +64,21 @@ function cart()
     $quantity = 1;
 
     foreach ($_SESSION as $name => $value) {
+
+
+
         if ($value > 0) {
 
 
             if (substr($name, 0, 5) == "drug_") {
 
                 //Pulling out the Ids out of the session
-                $lenght = strlen((int)$name - 5);
+                $lenght = strlen($name);
                 $id = substr($name, 5, $lenght);
 
 
                 $query = query("SELECT * FROM drugs WHERE drug_id =  " . escape_string($id) . " ");
                 confirm($query);
-
-
 
 
                 while ($row = fetch_Array($query)) {
@@ -88,7 +89,10 @@ function cart()
 
                     $cart = <<<HEREDOC
             <tr>
-            <td>{$row['drug_name']}</td>
+            <td>
+            {$row['drug_name']}<br>
+            <img src="../resources/uploads/{$row['drug_image']}">
+            </td>
             <td>Ksh {$row['drug_price']}</td>
             <td>{$value}</td>
             <td>Ksh {$sub}</td>
@@ -96,7 +100,6 @@ function cart()
             <a class="btn btn-success" href="../resources/cart.php?add={$row['drug_id']}"><span class="glyphicon glyphicon-plus"></span></a>
               <a class="btn btn-warning" href="../resources/cart.php?remove={$row['drug_id']}"><span class="glyphicon glyphicon-minus"></span></a>
               <a class="btn btn-danger" href="../resources/cart.php?delete={$row['drug_id']}"><span class="glyphicon glyphicon-remove"></span></a>
-              
             </td>
         </tr>
         <input type="hidden" name="item_name_{$item_name}" value="{$row['drug_name']}">
@@ -109,9 +112,11 @@ function cart()
                     $item_number++;
                     $amount++;
                     $quantity++;
+
+
+                    $_SESSION['item_total'] = $total +=  $sub;
+                    $_SESSION['item_quantity'] = $item_quantity;
                 }
-                $_SESSION['item_total'] = $total += $sub;
-                $_SESSION['item_quantity'] = $item_quantity;
             }
         }
     }
@@ -193,9 +198,9 @@ function process_transaction()
 
                         $insert_report = query("INSERT INTO reports (drug_id, order_id, drug_price,drug_name, drug_quantity) VALUES('{$id}','{$last_id}','{$drug_price}','{$drug_name}','{$value}')");
                         confirm($insert_report);
+                        $total += $sub;
+                        $item_quantity;
                     }
-                    $total += $sub;
-                    $item_quantity;
                 }
             }
         }

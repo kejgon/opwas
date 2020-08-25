@@ -2,7 +2,8 @@
 <?php require_once("../../resources/config.php"); ?>
 
 <!-- HEADER -->
-<?php include('../../resources/tamplates/back/header.php'); ?>
+<?php include('../../resources/tamplates/back/header.php');
+?>
 
 
 
@@ -19,14 +20,15 @@ if (!isset($_SESSION['username'])) {
 
     <div class="container-fluid">
 
-
         <!-- /.row -->
 
 
         <?php
 
 
-        if ($_SERVER['REQUEST_URI'] == "/Online-Pharmacy/public/admin/" || $_SERVER['REQUEST_URI'] == "/Online-Pharmacy/public/admin/index.php") {
+        if ($_SERVER['REQUEST_URI'] == "/online-pharmacy/public/admin/" || $_SERVER['REQUEST_URI'] == "/online-pharmacy/public/admin/index.php") {
+
+            // include("../../resources/tamplates/back/admin_content.php");
 
             include("../../resources/tamplates/back/admin_content.php");
         }
@@ -53,8 +55,15 @@ if (!isset($_SESSION['username'])) {
             include("../../resources/tamplates/back/categories.php");
         }
 
+
         if (isset($_GET['users'])) {
             include("../../resources/tamplates/back/users.php");
+        }
+        if (isset($_GET['add_user'])) {
+            include("../../resources/tamplates/back/add_user.php");
+        }
+        if (isset($_GET['edit_user'])) {
+            include("../../resources/tamplates/back/edit_user.php");
         }
 
         ?>
@@ -62,9 +71,7 @@ if (!isset($_SESSION['username'])) {
 
 
 
-        <!-- ADMIN-CONTENTS -->
-        <?php //include("../../resources/tamplates/back/admin_content.php"); 
-        ?>
+
 
     </div>
     <!-- /.container-fluid -->

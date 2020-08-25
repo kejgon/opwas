@@ -56,6 +56,16 @@ h1,h2,h3,h4,h5,h6{
 
   
 }
+.thumbnail{
+    border: 0;
+    border-radius: 10px;
+    /* box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.26); */
+
+}
+.thumbnail img{
+    width: auto;
+}
+
 .container-fluid{
     padding: 1% 16%;
 }
@@ -150,10 +160,6 @@ box-shadow:1px 3px 5px rgba(0, 0, 0, 0.26);
       
   }
 
-  .drug_img{
-      width: 100%;
-      height: 400px;
-  }
 
   .checkout-table td{
       text-align: left;

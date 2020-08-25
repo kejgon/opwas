@@ -69,7 +69,7 @@
                     <th>Order Total</th>
                     <td><strong><span class="amount">
 
-                                Ksh <?php echo isset($_SESSION['item_total']) ? $_SESSION['item_total'] : $_SESSION['item_total'] = "00.0"; ?>
+                                Ksh <?php echo isset($_SESSION['item_total']) ? $_SESSION['item_total'] : $_SESSION['item_total'] = "0"; ?>
 
                             </span></strong> </td>
                 </tr>
@@ -81,12 +81,12 @@
 
         </div><!-- CART TOTALS-->
 
-
     </div>
-    <!--Main Content-->
+</div>
+<!--Main Content-->
 
-    <!--- FOOTER---->
-    <?php include("../resources/tamplates/front/footer.php") ?>
+<!--- FOOTER---->
+<?php include("../resources/tamplates/front/footer.php") ?>
 
-    <?php //include(TEMPLATE_FRONT . DS . "footer.php") 
-    ?>
+<?php //include(TEMPLATE_FRONT . DS . "footer.php") 
+?>

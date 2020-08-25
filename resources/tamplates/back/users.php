@@ -4,7 +4,8 @@
 
     </h1>
     <p class="bg-success">
-        <?php echo $message; ?>
+        <?php echo display_Message();
+        ?>
     </p>
 
     <a href="add_user.php" class="btn btn-primary">Add User</a>
@@ -16,33 +17,18 @@
             <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Photo</th>
+                    <!-- <th>Photo</th> -->
                     <th>Username</th>
-                    <th>First Name</th>
-                    <th>Last Name </th>
+                    <th>User Password</th>
+                    <th>User Email</th>
+                    <th>Delete</th>
+
                 </tr>
             </thead>
             <tbody>
 
-                <?php foreach ($users as $user) : ?>
 
-                    <tr>
-                        <td>2</td>
-                        <td><img class="admin-user-thumbnail user_image" src="placehold.it/62x62" alt=""></td>
-
-                        <td>Rico
-                            <div class="action_links">
-                                <a href="">Delete</a>
-                                <a href="">Edit</a>
-                            </div>
-                        </td>
-
-
-                        <td>Edwin</td>
-                        <td>Diaz</td>
-                    </tr>
-                <?php endforeach; ?>
-
+                <?php display_users(); ?>
 
 
 

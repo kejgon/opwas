@@ -3,6 +3,7 @@
 
 ////! CUSTOM FUNCTIONS
 
+
 function last_id()
 {
     global $connection;
@@ -66,6 +67,7 @@ function fetch_Array($result)
 }
 
 
+
 ////!------------------------  FRONT-END FUNCTIONS --------------------------------- ////
 
 //GET DRUGS
@@ -80,7 +82,7 @@ function get_Drugs()
         $drugs = <<<DElIMETER
         <div class="col-sm-4 col-lg-4 col-md-4">
                     <div class="thumbnail">
-                        <a href="item.php?id={$row['drug_id']}"><img class="drug_img" src="{$row['drug_image']}" alt="{$row['drug_name']} "></a>
+                        <a href="item.php?id={$row['drug_id']}"><img class="drug_img" src="../resources/uploads/{$row['drug_image']}" ></a>
                         <div class="caption">
                             <h4 class="pull-right"> Ksh {$row['drug_price']}</h4>
                             <h4><a href="item.php?id={$row['drug_id']}">{$row['drug_name']}</a></h4>
@@ -113,7 +115,7 @@ function get_Categories()
 function get_Drug_Category()
 {
 
-    $query = query("SELECT * FROM drugs WHERE drug_category_id = " . escape_string($_GET['id']) . "");
+    $query = query("SELECT * FROM drugs WHERE drug_category_id = " . escape_string($_GET['id']) . " ");
     confirm($query);
 
     while ($row = fetch_Array($query)) {
@@ -121,7 +123,7 @@ function get_Drug_Category()
         $drugs_Cat = <<<DElIMETER
         <div class="col-md-4 col-sm-6 hero-feature">
                     <div class="thumbnail">
-                        <a href="item.php?id={$row['drug_id']}"><img src="{$row['drug_image']}" alt="{$row['drug_name']}"></a>
+                        <a href="item.php?id={$row['drug_id']}"><img src="../resources/uploads/{$row['drug_image']}" alt="{$row['drug_name']}"></a>
                         <div class="caption">
                             <h4 class="pull-right"> Ksh {$row['drug_price']}</h4>
                             <h4><a href="item.php?id={$row['drug_id']}">{$row['drug_name']}</a></h4>
@@ -148,7 +150,7 @@ function get_Drugs_In_Shop()
         $drugs = <<<DElIMETER
         <div class="col-sm-4 col-lg-4 col-md-4">
                     <div class="thumbnail">
-                        <a href="item.php?id={$row['drug_id']}"><img src="{$row['drug_image']}" alt="{$row['drug_name']}"></a>
+                        <a href="item.php?id={$row['drug_id']}"><img src="../resources/uploads/{$row['drug_image']}" alt="{$row['drug_name']}"></a>
                         <div class="caption">
                             <h4 class="pull-right"> Ksh {$row['drug_price']}</h4>
                             <h4><a href="item.php?id={$row['drug_id']}">{$row['drug_name']}</a></h4>
@@ -216,6 +218,7 @@ function send_Message()
 
 
 
+
 ////!------------------------  BACK-END FUNCTIONS --------------------------------- ////
 
 
@@ -251,16 +254,18 @@ function display_all_drug()
 
     while ($row = fetch_Array($query)) {
 
+        $category_name = display_Drugs_Category_name($row['drug_category_id']);
+
         $drugs = <<<HEREDOC
         <tr>
             <td>{$row['drug_id']}</td>
             <td>
             {$row['drug_name']}<br>
-            <a href="index.php?edit_drug&id={$row['drug_id']}"> <img src="{$row['drug_image']}" alt="" width="70"></a>
+            <a href="index.php?edit_drug&id={$row['drug_id']}"><img src="../../resources/uploads/{$row['drug_image']}" alt="" width="50"></a>
             </td>
             <td>{$row['drug_short_description']}</td>
             <td>{$row['drug_description']}</td>
-            <td>{$row['drug_category_id']}</td>
+            <td>{$category_name}</td>
             <td>{$row['drug_price']}</td>
             <td>{$row['drug_quantity']}</td>
             <td><a class="btn btn-danger" href="../../resources/tamplates/back/delete_drug.php?id={$row['drug_id']}"><span class="glyphicon glyphicon-remove"></span></td>
@@ -272,39 +277,168 @@ function display_all_drug()
     }
 }
 
-//??******************* ADDING DRUGS *********************??/
+//??******************* DRUGS Category *********************??/
+function display_Drugs_Category_name($drug_category_id)
+{
+    $category = query("SELECT * FROM categories WHERE cat_id = '{$drug_category_id}' ");
+    confirm($category);
+
+    while ($row = fetch_Array($category)) {
+        return $row['cat_title'];
+    }
+}
+
+
+
+
+
+
+//??*********************** ADDING DRUGS *************************??/
 function add_drugs()
 {
     if (isset($_POST['publish'])) {
 
-        $drug_name = escape_string($_POST['drug_name']);
-        $drug_short_desc = escape_string($_POST['drug_short_descr']);
+        $drug_name         = escape_string($_POST['drug_name']);
+        $drug_short_desc   = escape_string($_POST['drug_short_descr']);
+        $drug_description  = escape_string($_POST['drug_description']);
+        $drug_price        = escape_string($_POST['drug_price']);
+        $drug_quantity     = escape_string($_POST['drug_quantity']);
+        $drug_category_id  = escape_string($_POST['drug_category_id']);
+        $drug_image        = escape_string($_FILES['pictures']['name']);
+        $drug_image_temp_location = escape_string($_FILES['pictures']['tmp_name']);
+
+        $uploads_Directory = '../../resources/uploads/';
+        move_uploaded_file($_FILES["pictures"]["tmp_name"], $uploads_Directory  . basename($drug_image)); // moving media documents  to uploads folder!
+
+        $inert_drug = query("INSERT INTO drugs(drug_name, drug_category_id, drug_price, drug_quantity, drug_short_description, drug_description,drug_image) VALUES('{$drug_name}','{$drug_category_id}','{$drug_price}','{$drug_quantity}','{$drug_short_desc}','{$drug_description}','{$drug_image}')");
+        confirm($inert_drug);
+        set_Message("The Drug have been Added!");
+        redirect("index.php?drugs");
+    }
+}
+
+function display_categories_on_add_Drug()
+{
+
+    $query = query("SELECT * FROM categories");
+    confirm($query);
+
+    while ($row = fetch_Array($query)) {
+
+        $categoris_options  = <<<HEREDOC
+        <option value="{$row['cat_id']}">{$row['cat_title']}</option>
+        HEREDOC;
+        echo $categoris_options;
+    }
+}
+
+
+//***************************** Updating Drugs******************************** ??*/
+function update_Drugs()
+{
+    if (isset($_POST['update'])) {
+
+        $drug_name        = escape_string($_POST['drug_name']);
+        $drug_short_desc  = escape_string($_POST['drug_short_descr']);
         $drug_description = escape_string($_POST['drug_description']);
-        $drug_price = escape_string($_POST['drug_price']);
-        $drug_quantity = escape_string($_POST['drug_quantity']);
+        $drug_price       = escape_string($_POST['drug_price']);
+        $drug_quantity    = escape_string($_POST['drug_quantity']);
         $drug_category_id = escape_string($_POST['drug_category_id']);
-        // $drug_image = escape_string($_FILES['img']['name']);
-        // $drug_image_temp_location = escape_string($_FILES['img']['tmp_name']);
-        $image = escape_string($_FILES['image']['name']);;
-        // Get text
-        move_uploaded_file($_FILES['image']['tmp_name'], 'uploads/' . $_FILES['image']['name']);
-
-        // image file directory
-        // $target = "uploads/" . basename($image);
+        $drug_image       = escape_string($_FILES['pictures']['name']);
+        $drug_image_temp_location = escape_string($_FILES['pictures']['tmp_name']);
 
 
-        if (move_uploaded_file($_FILES['image']['tmp_name'], 'uploads/' . basename($_FILES['image']['name']))) {
-            $msg = "Image uploaded successfully";
-        } else {
-            $msg = "Failed to upload image";
+        $uploads_Directory = '../../resources/uploads/';
+        move_uploaded_file($_FILES["pictures"]["tmp_name"], $uploads_Directory  . basename($drug_image)); // moving media documents  to uploads folder!
+
+
+        if (empty($drug_image)) {
+            $get_Image = query("SELECT drug_image FROM drugs WHERE drug_id = " . escape_string($_GET['id']) . " ");
+            confirm($get_Image);
+            while ($img_row = fetch_Array($get_Image)) {
+                $drug_image = $img_row['drug_image'];
+            }
         }
 
-        $inert_drug = query("INSERT INTO drugs(drug_name, drug_category_id, drug_price, drug_quantity, drug_short_description, drug_description,drug_image) VALUES('{$drug_name}','{$drug_category_id}','{$drug_price}','{$drug_quantity}','{$drug_short_desc}','{$drug_description}','{$image}')");
-        confirm($inert_drug);
-        set_Message($msg);
+
+        $update_drug_query = "UPDATE drugs SET ";
+        $update_drug_query .= "drug_name               = '{$drug_name}'         , ";
+        $update_drug_query .= "drug_short_description  = '{$drug_short_desc}'   , ";
+        $update_drug_query .= "drug_description        = '{$drug_description}'  , ";
+        $update_drug_query .= "drug_price              = '{$drug_price}'        , ";
+        $update_drug_query .= "drug_quantity           = '{$drug_quantity}'     , ";
+        $update_drug_query .= "drug_category_id        = '{$drug_category_id}'  , ";
+        $update_drug_query .= "drug_image              = '{$drug_image}'          ";
+        $update_drug_query .= "WHERE drug_id = " . escape_string($_GET['id']);
+
+        confirm(query($update_drug_query));
+
+        set_Message("The Drug have been updated");
         redirect("index.php?drugs");
+    }
+}
 
 
-        // $drug_tag = escape_string($_POST['drug_tasg']);
+//***************************** Drug Categories ******************************** ??*/
+function display_drug_categories()
+{
+    $query = query("SELECT * FROM categories");
+    confirm($query);
+    while ($row = fetch_Array($query)) {
+        $cat_id = $row['cat_id'];
+        $cat_name = $row['cat_title'];
+
+        $categories = <<<HEREDOC
+        <tr>
+           <td>{$cat_id}</td>
+           <td>{$cat_name}</td>
+           <td><a class="btn btn-danger" href="../../resources/tamplates/back/delete_category.php?id={$row['cat_id']}"><span class="glyphicon glyphicon-remove"></span></td>
+        </tr>
+        HEREDOC;
+        echo $categories;
+    }
+}
+
+//***************************** Add Categories ******************************** ??*/
+function add_categories()
+{
+    if (isset($_POST['submit'])) {
+
+        $category_name = escape_string($_POST['category_name']);
+
+        if (empty($category_name) || $category_name == " ") {
+            echo "<p class='bg-danger'>Please fill in the field</p>";
+        } else {
+
+            $insert_query = query("INSERT INTO categories (cat_title) VALUES ('{$category_name}')");
+            confirm($insert_query);
+            set_Message("The Category have been Added");
+        }
+    }
+}
+
+
+
+//***************************** USERS ******************************** ??*/
+function display_users()
+{
+    $query = query("SELECT * FROM users");
+    confirm($query);
+    while ($row = fetch_Array($query)) {
+        $user_id = $row['user_id'];
+        $user_name = $row['user_name'];
+        $user_password = $row['user_password'];
+        $user_email = $row['user_email'];
+
+        $categories = <<<HEREDOC
+        <tr>
+           <td>{$user_id}</td>
+           <td>{$user_name}</td>
+           <td>{$user_password}</td>
+           <td>{$user_email}</td>
+           <td><a class="btn btn-danger" href="../../resources/tamplates/back/delete_user.php?id={$row['user_id']}"><span class="glyphicon glyphicon-remove"></span></td>
+        </tr>
+        HEREDOC;
+        echo $categories;
     }
 }

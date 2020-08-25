@@ -4,12 +4,14 @@
         <h1 class="page-header">
             Add Drugs
         </h1>
+
         <p class="bg-success"><?php display_Message(); ?></p>
     </div>
 
 
 
-    <form action="" method="post" enctype="multipart/form-data">
+    <form method="POST" action="" enctype="multipart/form-data">
+
 
 
         <div class="col-md-8">
@@ -66,17 +68,19 @@
 
             <!-- Drug Categories-->
 
-            <!-- <div class="form-group">
+            <div class="form-group">
                 <label for="drug_category">Drug Category</label>
                 <hr>
                 <select name="drug_category_id" id="" class="form-control">
                     <option value="">Select Category</option>
+                    <?php display_categories_on_add_Drug(); ?>
+
                 </select>
-            </div> -->
-            <div class="form-group">
+            </div>
+            <!-- <div class="form-group">
                 <label for="drug_category">Drug Category</label>
                 <input type="number" name="drug_category_id" class="form-control">
-            </div>
+            </div> -->
 
 
 
@@ -104,15 +108,20 @@
             <!-- Drug Image -->
             <div class="form-group">
                 <label for="image">Drugt Image</label>
-                <input type="file" name="image" value="">
+                <input name="pictures" type="file" multiple="multiple" />
 
             </div>
 
 
 
-        </aside>
-        <!--SIDEBAR-->
+            <!-- </aside> -->
+            <!--SIDEBAR-->
 
-        <?php add_drugs(); ?>
+
 
     </form>
+
+</div>
+
+
+<?php add_drugs(); ?>
