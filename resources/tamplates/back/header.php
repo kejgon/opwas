@@ -39,7 +39,7 @@
     <div id="wrapper">
 
         <!-- Navigation -->
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <nav class="navbar navbar-inverse navbar-sticky-top" role="navigation">
 
 
             <!-- Brand and toggle get grouped for better mobile display -->

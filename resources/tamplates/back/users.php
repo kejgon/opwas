@@ -8,7 +8,8 @@
         ?>
     </p>
 
-    <a href="add_user.php" class="btn btn-primary">Add User</a>
+    <a href="index.php?add_users" class="btn btn-primary">Add User</a>
+
 
 
     <div class="col-md-12">
@@ -22,6 +23,7 @@
                     <th>User Password</th>
                     <th>User Email</th>
                     <th>Delete</th>
+                    <th>Edit</th>
 
                 </tr>
             </thead>

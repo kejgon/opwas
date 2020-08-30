@@ -14,7 +14,7 @@
         <?php include("../resources/tamplates/front/side_nav.php") ?>
 
 
-        <div class="col-md-10">
+        <div class="col-md-12">
             <!-- <h3>Latest Features</h3> -->
             <div class="row text-center">
 

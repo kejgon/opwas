@@ -59,11 +59,11 @@ if (!isset($_SESSION['username'])) {
         if (isset($_GET['users'])) {
             include("../../resources/tamplates/back/users.php");
         }
-        if (isset($_GET['add_user'])) {
-            include("../../resources/tamplates/back/add_user.php");
+        if (isset($_GET['add_users'])) {
+            include("../../resources/tamplates/back/add_users.php");
         }
-        if (isset($_GET['edit_user'])) {
-            include("../../resources/tamplates/back/edit_user.php");
+        if (isset($_GET['edit_users'])) {
+            include("../../resources/tamplates/back/edit_users.php");
         }
 
         ?>

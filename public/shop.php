@@ -25,7 +25,7 @@
 <!-- /.row -->
 <div class="container">
     <!-- Page Features -->
-    <div class="row text-center">
+    <div class="row ">
 
         <?php get_Drugs_In_Shop(); ?>
 

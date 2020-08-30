@@ -79,18 +79,21 @@ function get_Drugs()
 
     while ($row = fetch_Array($query)) {
 
+
         $drugs = <<<DElIMETER
-        <div class="col-sm-4 col-lg-4 col-md-4">
-                    <div class="thumbnail">
-                        <a href="item.php?id={$row['drug_id']}"><img class="drug_img" src="../resources/uploads/{$row['drug_image']}" ></a>
-                        <div class="caption">
-                            <h4 class="pull-right"> Ksh {$row['drug_price']}</h4>
-                            <h4><a href="item.php?id={$row['drug_id']}">{$row['drug_name']}</a></h4>
-                            <p>{$row['drug_short_description']}</p>
-                            <a class="btn btn-primary"  href="../resources/cart.php?add={$row['drug_id']}">ADD TO CART</a>
-                        </div>
-                    </div>
+        <div class="swiper-slide">
+            <div class="slider-box">
+                <div class="img-box">
+                    <img src="../resources/uploads/{$row['drug_image']}">
                 </div>
+                <p class="detail"><a href="item.php?id={$row['drug_id']}">{$row['drug_name']}</a>
+                    <a href="#" class="price">Ksh {$row['drug_price']}</a>
+                </p>
+                <div class="cart">
+                    <a href="../resources/cart.php?add={$row['drug_id']}">Add To Cart</a>
+                </div>
+            </div>
+        </div>
         DElIMETER;
         echo $drugs;
     }
@@ -121,17 +124,21 @@ function get_Drug_Category()
     while ($row = fetch_Array($query)) {
 
         $drugs_Cat = <<<DElIMETER
-        <div class="col-md-4 col-sm-6 hero-feature">
-                    <div class="thumbnail">
-                        <a href="item.php?id={$row['drug_id']}"><img src="../resources/uploads/{$row['drug_image']}" alt="{$row['drug_name']}"></a>
-                        <div class="caption">
-                            <h4 class="pull-right"> Ksh {$row['drug_price']}</h4>
-                            <h4><a href="item.php?id={$row['drug_id']}">{$row['drug_name']}</a></h4>
-                            <p>{$row['drug_short_description']}</p>
-                            <a class="btn btn-primary"  href="../resources/cart.php?add={$row['drug_id']}">ADD TO CART</a>
-                        </div>
-                    </div>
+        <div class="col-lg-4 col-md-4 col-sm-4">
+        <div class="swiper-slide">
+            <div class="slider-box">
+                <div class="img-box">
+                    <img src="../resources/uploads/{$row['drug_image']}">
                 </div>
+                <p class="detail"><a href="item.php?id={$row['drug_id']}">{$row['drug_name']}</a>
+                    <a href="#" class="price">Ksh {$row['drug_price']}</a>
+                </p>
+                <div class="cart">
+                    <a href="../resources/cart.php?add={$row['drug_id']}">Add To Cart</a>
+                </div>
+            </div>
+        </div>
+        </div>
         DElIMETER;
         echo $drugs_Cat;
     }
@@ -148,17 +155,21 @@ function get_Drugs_In_Shop()
     while ($row = fetch_Array($query)) {
 
         $drugs = <<<DElIMETER
-        <div class="col-sm-4 col-lg-4 col-md-4">
-                    <div class="thumbnail">
-                        <a href="item.php?id={$row['drug_id']}"><img src="../resources/uploads/{$row['drug_image']}" alt="{$row['drug_name']}"></a>
-                        <div class="caption">
-                            <h4 class="pull-right"> Ksh {$row['drug_price']}</h4>
-                            <h4><a href="item.php?id={$row['drug_id']}">{$row['drug_name']}</a></h4>
-                            <p>{$row['drug_short_description']}</p>
-                            <a class="btn btn-primary" href="../resources/cart.php?add={$row['drug_id']}">ADD TO CART</a>
-                        </div>
-                    </div>
+        <div class="col-lg-4 col-md-4 col-sm-4">
+        <div class="swiper-slide">
+            <div class="slider-box">
+                <div class="img-box">
+                    <img src="../resources/uploads/{$row['drug_image']}">
                 </div>
+                <p class="detail"><a href="item.php?id={$row['drug_id']}">{$row['drug_name']}</a>
+                    <a href="#" class="price">Ksh {$row['drug_price']}</a>
+                </p>
+                <div class="cart">
+                    <a href="../resources/cart.php?add={$row['drug_id']}">Add To Cart</a>
+                </div>
+        </div>
+        </div>
+        </div>
         DElIMETER;
         echo $drugs;
     }
@@ -437,8 +448,58 @@ function display_users()
            <td>{$user_password}</td>
            <td>{$user_email}</td>
            <td><a class="btn btn-danger" href="../../resources/tamplates/back/delete_user.php?id={$row['user_id']}"><span class="glyphicon glyphicon-remove"></span></td>
-        </tr>
+           <td><a class="btn btn-warn" href="index.php?edit_users&id={$row['user_id']}"><span class="glyphicon glyphicon-edit"></span></td>
+           </tr>
         HEREDOC;
         echo $categories;
+    }
+}
+
+//***************************** ADD USERS ******************************** ??*/
+function add_Users()
+{
+    if (isset($_POST['add_user'])) {
+
+        $user_name         = escape_string($_POST['username']);
+        $user_email        = escape_string($_POST['email']);
+        $user_password     = escape_string($_POST['password']);
+
+        if (
+            (empty($user_name) || $user_name == " ")
+            && (empty($user_email) || $user_email == " ")
+            && (empty($user_password) || $user_password == " ")
+        ) {
+            echo "<p class='bg-danger'>Please fill in the field</p>";
+        } else {
+
+            $inert_users = query("INSERT INTO users(user_name, user_password, user_email) VALUES('{$user_name}','{$user_password}','{$user_email}')");
+            confirm($inert_users);
+            set_Message("A new users have been Added!");
+            redirect("index.php?users");
+        }
+    }
+}
+
+//***************************** Updating Users******************************** ??*/
+function update_users()
+{
+    if (isset($_POST['update_user'])) {
+
+        $user_name        = escape_string($_POST['username']);
+        $user_email       = escape_string($_POST['email']);
+        $user_password    = escape_string($_POST['password']);
+
+
+
+        $update_users_query = "UPDATE users SET ";
+        $update_users_query .= "user_name         = '{$user_name}'        , ";
+        $update_users_query .= "user_password     = '{$user_password}'    , ";
+        $update_users_query .= "user_email        = '{$user_email}'         ";
+        $update_users_query .= "WHERE user_id = " . escape_string($_GET['id']);
+
+        confirm(query($update_users_query));
+
+        set_Message("The user have been updated");
+        redirect("index.php?users");
     }
 }
