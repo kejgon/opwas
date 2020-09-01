@@ -1,7 +1,5 @@
 <div class="container">
 
-    <hr>
-
 
     <a class="scroll-to-top rounded SmoothmyTop" style="display: inline;">
         <i class="glyphicon glyphicon-chevron-up"></i> <!-- <button type="button" class="SmoothmyTop">Click to Smooth Scroll to Top</button> -->
@@ -9,6 +7,7 @@
 
     <!-- Footer -->
     <footer>
+
         <div class="row">
             <div class="col-lg-12 text-center">
                 <p>Copyright &copy; OPWAS 2020</p>

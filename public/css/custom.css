@@ -130,37 +130,14 @@ h1,h2,h3,h4,h5,h6{
 }
 
 
-/***    FEATURES SERVICES       ****/
-#full-features{
-  background-color: #6dd5ed;
-  padding: 50px;
 
-}
-#features{
-  margin: 0 auto;
 
-}
 
-.feature-image{
-    width: 20%;
-    margin: 0 auto;
-}
 .img{
     width: 100%;
 }
 
-.feature-content{
-    padding: 10px;
-}
 
-.features-box h3{
-    color: #505bda;
-    font-weight: bold;
-    text-align: center;
-}
-.features-box p{
-    padding: 0 50px;
-}
 
 
 .hr{
@@ -254,6 +231,21 @@ h1,h2,h3,h4,h5,h6{
     height: 100px;
   }
 
+
+  /***    FEATURES SERVICES       ****/
+#full-features{
+  background-color: #6dd5ed;
+  padding: 10% 5%;
+
+}
+#features{
+  margin: 0 auto;
+
+}
+  .box-f:hover{
+    padding: 4%;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
 
 
   

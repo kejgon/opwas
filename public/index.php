@@ -61,48 +61,55 @@
 <div class="fuild-container" id="full-features">
     <div class="container" id="features">
         <div class="row">
-            <h1 class="big-heading">OPWAS Services</h1>
-            <hr class="hr">
 
-            <div class=" features-box col-md-4">
-                <div class="feature-image text-center">
-                    <img class="img " src="img/icons/online-order (1).png" alt="">
-                </div>
-                <div class="feature-content">
-                    <h3 class="section-heading"> Online Service</h3>
-                    <p class="text-center">is simply dummy text of the printing and typesetting industry.
-                        Lorem Ipsum has been the industry's standard dummy text.</p>
-                </div>
-            </div>
-
-            <div class="features-box col-md-4">
-                <div class="feature-image">
-                    <img class="img" src="img/icons/delivery-man.png" alt="">
-                </div>
-                <div class="feature-content">
-                    <h3 class="section-heading">DELIVERY</h3>
-                    <p class="text-center">is simply dummy text of the printing and typesetting industry.
-                        Lorem Ipsum has been the industry's standard dummy text.</p>
+            <div class=" features-box col-md-3">
+                <div class="box-f">
+                    <p class="text-center">
+                        Search for your medication online by name or condition. You can also call</p>
                 </div>
             </div>
 
 
-
-            <div class="features-box col-md-4">
-                <div class="feature-image">
-                    <img class="img" src="img/icons/customer-service.png" alt="">
+            <div class="features-box col-md-3">
+                <div class="box-f">
+                    <p class="text-center">
+                        Place your order online & by phone or by live chat.</p>
                 </div>
-                <div class="feature-content">
-                    <h3 class="section-heading">Customer Service</h3>
-                    <p class="text-center">is simply dummy text of the printing and typesetting industry.
-                        Lorem Ipsum has been the industry's standard dummy text.</p>
+            </div>
+
+
+            <div class="features-box col-md-3">
+                <div class="box-f">
+                    <p class="text-center">Send us your (Rx) prescription to process your order.</p>
+                </div>
+            </div>
+
+            <div class="features-box col-md-3">
+                <div class="box-f">
+                    <p class="text-center">Order complete! You will receive your medications by mail.</p>
                 </div>
             </div>
 
         </div>
+
     </div>
 </div>
 
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Contact: 07000000000</h2>
+
+        </div>
+        <div class="col-md-6">
+            <h2>Email:opwas@gmail.com</h2>
+
+        </div>
+
+    </div>
+</div>
 <!--- FOOTER---->
 <?php include("../resources/tamplates/front/footer.php") ?>
 
