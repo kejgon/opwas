@@ -7,57 +7,11 @@
 <?php include("../resources/tamplates/front/header.php") ?>
 
 
-<div class="fulid-container main-content">
-
-    <!-- Jumbotron Header -->
-    <header class="jumbotron hero-spacer">
-        <h1>Contact Us</h1>
-
-    </header>
-</div>
 
 
 
 
-<div class="fuild-container" id="full-features">
-    <div class="container" id="features">
-        <div class="row">
 
-            <div class=" features-box col-md-3">
-                <div class="box-f">
-                    <h3>Business Hours</h3>
-                    <p class="text-center">8:00AM => 5:00PM</p>
-                </div>
-            </div>
-
-
-            <div class="features-box col-md-3">
-                <div class="box-f">
-                    <h3>Email Us</h3>
-                    <p class="text-center">Email: opwas@gmail.com</p>
-                </div>
-            </div>
-
-
-            <div class="features-box col-md-3">
-                <div class="box-f">
-                    <h3>Phone</h3>
-                    <p class="text-center">0700000000</p>
-                </div>
-            </div>
-
-            <div class="features-box col-md-3">
-                <div class="box-f">
-                    <h3>Address</h3>
-
-                    <p class="text-center">Ngong Road </br> Adams</p>
-                </div>
-            </div>
-
-        </div>
-
-    </div>
-</div>
 
 
 
@@ -118,6 +72,19 @@
 
 
 <div class="clearfix"></div>
+<div class="fuild-container infos">
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Contact: 07000000000</h2>
+
+        </div>
+        <div class="col-md-6">
+            <h2>Email:opwas@gmail.com</h2>
+
+        </div>
+
+    </div>
+</div>
 
 
 

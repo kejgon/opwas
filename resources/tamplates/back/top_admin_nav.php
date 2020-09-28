@@ -7,14 +7,10 @@
     </button>
     <a class="navbar-brand" href="index.php"><img src="img/icons/icons8-hand-with-a-pill-100.png" width="50">OPWAS Admin</a>
 </div>
+
 <!-- Top Menu Items -->
 <ul class="nav navbar-right top-nav">
 
-    <!-- Actual search box -->
-    <!-- <div class="form-group has-feedback has-search">
-        <span class="glyphicon glyphicon-search form-control-feedback"></span>
-        <input type="text" class="form-control" placeholder="Search">
-    </div> -->
 
     <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $_SESSION['username']; ?><b class="caret"></b></a>

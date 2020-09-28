@@ -13,7 +13,6 @@
     <div class="row">
 
         <!-- Categories-->
-        <?php include("../resources/tamplates/front/side_nav.php") ?>
         <div class="col-md-12">
 
             <div class="row carousel-holder">
@@ -97,7 +96,7 @@
 
 
 
-<div class="container">
+<div class="fuild-container infos">
     <div class="row">
         <div class="col-md-6">
             <h2>Contact: 07000000000</h2>

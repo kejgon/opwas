@@ -11,7 +11,6 @@
     <!-- Title -->
     <div class="row">
         <!-- Categories-->
-        <?php include("../resources/tamplates/front/side_nav.php") ?>
 
 
         <div class="col-md-12">
@@ -24,14 +23,29 @@
             </div>
         </div>
     </div>
-    <!-- /.row -->
+</div>
+<!-- /.row -->
 
-    <!-- Page Features -->
+<!-- Page Features -->
 
-    <!-- /.row -->
+<!-- /.row -->
+<div class="clearfix"></div>
 
-    <!--- FOOTER---->
-    <?php include("../resources/tamplates/front/footer.php") ?>
+<div class="fuild-container infos">
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Contact: 07000000000</h2>
 
-    <?php //include(TEMPLATE_FRONT . DS . "footer.php") 
-    ?>
+        </div>
+        <div class="col-md-6">
+            <h2>Email:opwas@gmail.com</h2>
+
+        </div>
+
+    </div>
+</div>
+<!--- FOOTER---->
+<?php include("../resources/tamplates/front/footer.php") ?>
+
+<?php //include(TEMPLATE_FRONT . DS . "footer.php") 
+?>

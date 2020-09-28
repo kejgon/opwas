@@ -6,7 +6,7 @@
     </ol>
     <div class="carousel-inner">
         <div class="item active">
-            <img class="slide-image drug_img" src="img/1.jpg" alt="">
+            <img class="slide-image drug_img" src="img/11.jpg" alt="">
         </div>
         <div class="item">
             <img class="slide-image drug_img" src="img/2.jpg" alt="">

@@ -7,6 +7,9 @@
             <a href="index.php?orders"> <i class="fa fa-shopping-cart"></i> Orders</a>
         </li>
         <li>
+            <a href="index.php?reports"> <i class="fa fa-shopping-cart"></i> Reports</a>
+        </li>
+        <li>
             <a href="index.php?drugs"><i class="fa fa-fw fa-bar-chart-o"></i> View Drugs</a>
         </li>
         <li>

@@ -62,10 +62,14 @@ if (!isset($_SESSION['username'])) {
         if (isset($_GET['add_users'])) {
             include("../../resources/tamplates/back/add_users.php");
         }
+
         if (isset($_GET['edit_users'])) {
             include("../../resources/tamplates/back/edit_users.php");
         }
 
+        if (isset($_GET['reports'])) {
+            include("../../resources/tamplates/back/reports.php");
+        }
         ?>
 
 

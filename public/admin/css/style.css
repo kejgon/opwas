@@ -27,7 +27,7 @@ body{
   background-image: linear-gradient(180deg,#2ABAF7 80%,#3557bd 150%);
   background-size: cover;
   border: none;
-  /* height: 100px; */
+  height: 50px;
 
 }
 
@@ -37,6 +37,7 @@ body{
   border: none;
   box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.26);
   border-radius: 10px;
+  
 
 }
 .navbar-inverse .navbar-nav>li>a {
@@ -62,6 +63,7 @@ body{
 
 .navbar-brand{
   display: flex;
+  padding: 0;
  
 }
 .side-nav{
@@ -131,5 +133,5 @@ margin-bottom: 10px;
 }
 #admin_sidebar .btn{
 width: 49%;
-}
- */
+} */
+
