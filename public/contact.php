@@ -20,6 +20,7 @@
 <!-- Contact Section -->
 
 <div class="container">
+    <h3><?php display_Message(); ?></h3>
     <div class="contact-form">
         <div class="row ">
             <div class="col-lg-12 text-center">
@@ -27,7 +28,7 @@
             </div>
         </div>
 
-        <form name="sentMessage" id="contactForm" method="POST">
+        <form name="sentMessage" id="contactForm" method="POST" action="contact.php">
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
@@ -38,10 +39,7 @@
                         <input type="email" name="contact_email" class="form-control" placeholder="Your Email *" id="email" required data-validation-required-message="Please enter your email address.">
                         <p class="help-block text-danger"></p>
                     </div>
-                    <div class="form-group">
-                        <input type="text" name="contact_phone" class="form-control" placeholder="Your Phone *" id="phone" required data-validation-required-message="Please enter your phone number.">
-                        <p class="help-block text-danger"></p>
-                    </div>
+
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
@@ -58,17 +56,19 @@
 
             <div class="row">
                 <div class="col-lg-12">
-                    <button name="submit" type="submit" class="btn btn-primary">Send Message</button>
+                    <button name="submit" type="submit" class="btn btn-primary btn-login">Send Message</button>
                 </div>
             </div>
         </form>
+
+
+        <!--- SENDING MESSAGE FORMS-->
+        <?php contact_message(); ?>
 
     </div>
 </div>
 
 
-<!--- SENDING MESSAGE FORMS-->
-<?php send_Message(); ?>
 
 
 <div class="clearfix"></div>

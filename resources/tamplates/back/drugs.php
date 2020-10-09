@@ -19,6 +19,8 @@
                     <th>Drug category </th>
                     <th>Drug price</th>
                     <th>Drug quantity</th>
+                    <th>How to use</th>
+                    <th>Precaution</th>
                     <th>Delete</th>
                     <th>Edit</th>
 

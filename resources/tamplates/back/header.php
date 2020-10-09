@@ -16,7 +16,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/sb-admin.css" rel="stylesheet">
+    <link href="css/sb-admin.css?v=<?php echo time(); ?>" rel="stylesheet">
 
     <!-- Morris Charts CSS -->
     <link href="css/plugins/morris.css" rel="stylesheet">
@@ -39,7 +39,8 @@
     <div id="wrapper">
 
         <!-- Navigation -->
-        <nav class="navbar navbar-inverse navbar-sticky-top" role="navigation">
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+
 
 
             <!-- Brand and toggle get grouped for better mobile display -->

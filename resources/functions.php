@@ -80,7 +80,7 @@ function get_Drugs()
     while ($row = fetch_Array($query)) {
 
 
-        $drugs = <<<DElIMETER
+        $drugs = <<<HEREDOC
         <div class="swiper-slide">
             <div class="slider-box">
                 <div class="img-box">
@@ -94,7 +94,7 @@ function get_Drugs()
                 </div>
             </div>
         </div>
-        DElIMETER;
+        HEREDOC;
         echo $drugs;
     }
 }
@@ -107,9 +107,9 @@ function get_Categories()
     confirm($query);
 
     while ($row = fetch_Array($query)) {
-        $categories = <<<DElIMETER
+        $categories = <<<HEREDOC
         <a href='category.php?id={$row['cat_id']}' class='list-group-item'>{$row['cat_title']}</a>
-        DElIMETER;
+        HEREDOC;
         echo $categories;
     }
 }
@@ -125,7 +125,7 @@ function get_Drug_Category()
     if (mysqli_num_rows($query) > 0) {
         while ($row = fetch_Array($query)) {
 
-            $drugs_Cat = <<<DElIMETER
+            $drugs_Cat = <<<HEREDOC
             <div class="col-lg-4 col-md-4 col-sm-4">
             <div class="swiper-slide">
                 <div class="slider-box">
@@ -141,7 +141,7 @@ function get_Drug_Category()
                 </div>
             </div>
             </div>
-            DElIMETER;
+            HEREDOC;
             echo $drugs_Cat;
         }
     } else {
@@ -295,7 +295,7 @@ function get_Drugs_In_Shop()
 
     while ($row = fetch_Array($query2)) {
 
-        $drugs = <<<DElIMETER
+        $drugs = <<<HEREDOC
         <div class="col-lg-4 col-md-4 col-sm-4">
         <div class="swiper-slide">
             <div class="slider-box">
@@ -311,7 +311,7 @@ function get_Drugs_In_Shop()
         </div>
         </div>
         </div>
-        DElIMETER;
+        HEREDOC;
         echo $drugs;
     }
     echo "
@@ -349,27 +349,6 @@ function login_User()
 
 
 
-
-function send_Message()
-{
-    if (isset($_POST['submit'])) {
-        $to  = "opwas@gmail.com";
-        $fullname =  $_POST['contact_name'];
-        $email =  $_POST['contact_email'];
-        $phone = $_POST['contact_phone'];
-        $subject =  $_POST['contact_subject'];
-        $message =  $_POST['contact_message'];
-
-        $headers = "From: {$fullname}  {$email} ";
-
-        $result =  mail($to, $subject, $message, $headers);
-        if (!$result) {
-            echo "Error";
-        } else {
-            echo " Sent Successfully";
-        }
-    }
-}
 
 
 
@@ -427,6 +406,8 @@ function display_all_drug()
             <td>{$category_name}</td>
             <td>{$row['drug_price']}</td>
             <td>{$row['drug_quantity']}</td>
+            <td>{$row['howtouse']}</td>
+            <td>{$row['precautions']}</td>
             <td><a class="btn btn-danger" href="../../resources/tamplates/back/delete_drug.php?id={$row['drug_id']}"><span class="glyphicon glyphicon-remove"></span></td>
             <td><a class="btn btn-warn" href="index.php?edit_drug&id={$row['drug_id']}"><span class="glyphicon glyphicon-edit"></span></td>
         </tr>
@@ -460,6 +441,8 @@ function add_drugs()
         $drug_name         = escape_string($_POST['drug_name']);
         $drug_short_desc   = escape_string($_POST['drug_short_descr']);
         $drug_description  = escape_string($_POST['drug_description']);
+        $howtouse  = escape_string($_POST['howtouse']);
+        $precautions  = escape_string($_POST['precautions']);
         $drug_price        = escape_string($_POST['drug_price']);
         $drug_quantity     = escape_string($_POST['drug_quantity']);
         $drug_category_id  = escape_string($_POST['drug_category_id']);
@@ -469,7 +452,7 @@ function add_drugs()
         $uploads_Directory = '../../resources/uploads/';
         move_uploaded_file($_FILES["pictures"]["tmp_name"], $uploads_Directory  . basename($drug_image)); // moving media documents  to uploads folder!
 
-        $inert_drug = query("INSERT INTO drugs(drug_name, drug_category_id, drug_price, drug_quantity, drug_short_description, drug_description,drug_image) VALUES('{$drug_name}','{$drug_category_id}','{$drug_price}','{$drug_quantity}','{$drug_short_desc}','{$drug_description}','{$drug_image}')");
+        $inert_drug = query("INSERT INTO drugs(drug_name, drug_category_id, drug_price, drug_quantity, drug_short_description, drug_description,drug_image,howtouse,precautions) VALUES('{$drug_name}','{$drug_category_id}','{$drug_price}','{$drug_quantity}','{$drug_short_desc}','{$drug_description}','{$drug_image}','{$howtouse}','{$precautions}')");
         confirm($inert_drug);
         set_Message("The Drug have been Added!");
         redirect("index.php?drugs");
@@ -500,6 +483,8 @@ function update_Drugs()
         $drug_name        = escape_string($_POST['drug_name']);
         $drug_short_desc  = escape_string($_POST['drug_short_descr']);
         $drug_description = escape_string($_POST['drug_description']);
+        $howtouse = escape_string($_POST['howtouse']);
+        $precautions = escape_string($_POST['precautions']);
         $drug_price       = escape_string($_POST['drug_price']);
         $drug_quantity    = escape_string($_POST['drug_quantity']);
         $drug_category_id = escape_string($_POST['drug_category_id']);
@@ -524,6 +509,8 @@ function update_Drugs()
         $update_drug_query .= "drug_name               = '{$drug_name}'         , ";
         $update_drug_query .= "drug_short_description  = '{$drug_short_desc}'   , ";
         $update_drug_query .= "drug_description        = '{$drug_description}'  , ";
+        $update_drug_query .= "howtouse                = '{$howtouse}'  , ";
+        $update_drug_query .= "precautions             = '{$precautions}'  , ";
         $update_drug_query .= "drug_price              = '{$drug_price}'        , ";
         $update_drug_query .= "drug_quantity           = '{$drug_quantity}'     , ";
         $update_drug_query .= "drug_category_id        = '{$drug_category_id}'  , ";
@@ -764,7 +751,34 @@ function customer_login()
 
             $_SESSION['customer_name'] = $customer_name;
             //set_Message("Welcome to Admin panel" . $username);
-            redirect("index.php");
+            redirect("user_logedin.php");
         }
+    }
+}
+
+
+
+
+
+////** ///////////////////CONTACT FORM///////////////////  **////
+function contact_message()
+{
+    if (isset($_POST['submit'])) {
+
+        //fullname, Email, Phone, Subject, message
+        $full_name = $_POST['contact_name'];
+        $subjects = $_POST['contact_subject'];
+        $mailFrom = $_POST['contact_email'];
+        $message = $_POST['contact_message'];
+
+        // $mailTo = "kejgon@gmail.com";
+        // $headers = "From: " . $mailFrom;
+        // $txt = "You have received an e-mail from " . $full_name . ".\n\n" . $message;
+        // mail($mailTo, $subject, $txt, $headers);
+        // header("Location: contact.php?mailsend");
+
+        $message = query("INSERT INTO messages(full_name, subjects,mailFrom, messages) VALUE('{$full_name}','{$subjects}','{$mailFrom}','{$message}')");
+        confirm($message);
+        set_Message("Your message sent successfully");
     }
 }

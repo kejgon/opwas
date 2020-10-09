@@ -157,6 +157,20 @@ h1,h2,h3,h4,h5,h6{
      
   }
 
+  .tab-paragraph{
+text-align: left;
+padding: 50px;
+
+  }
+
+  .caption-full{
+    text-align: left;
+  }
+.caption-full>.price{
+  background: lightgreen;
+  width: 20% ;
+}
+
 
   .scroll-to-top {
     position: fixed;
@@ -368,8 +382,9 @@ h1,h2,h3,h4,h5,h6{
 /******** Dropdown********/
 .dropdown-menu{
   border: none;
-  opacity: 0.7;
+  opacity: 0.8;
   background-color: #baccd3;
+  width: 300px;
 }
 .list-group-item{
   border: none;
@@ -380,3 +395,29 @@ a.list-group-item:hover{
   background-color: #2193b0;
   color: #FFF;
 }
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+  visibility: hidden
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  visibility: hidden
+}
+
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  visibility: visible;
+  background: #6dd5ed;
+  border-radius: 10px;
+  box-shadow: 6px 14px 33px 10px rgba(54, 52, 54, 1);
+}
+/* .slider-box a{
+  font-size: 15px;
+} */
+

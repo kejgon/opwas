@@ -44,11 +44,21 @@
                 </form>
 
 
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user "></i>&nbsp;&nbsp;<?php echo $_SESSION['customer_name']; ?><span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <a href='' class='list-group-item'>Account</a>
+                            <a href='' class='list-group-item'>Orders</a>
+                            <a href='logout.php' class='list-group-item'>Logout</a>
+
+
+
+                        </ul>
+
+                </ul>
             </ul>
 
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="signin.php"><span class=""></span> Login</a></li>
-            </ul>
 
 
 

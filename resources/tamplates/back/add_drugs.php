@@ -33,6 +33,14 @@
                 <label for="product-title">Drug Description</label>
                 <textarea name="drug_description" id="" cols="30" rows="10" class="form-control"></textarea>
             </div>
+            <div class="form-group">
+                <label for="product-title">How to use?</label>
+                <textarea name="howtouse" id="" cols="30" rows="10" class="form-control"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="product-title">Precautions</label>
+                <textarea name="precautions" id="" cols="30" rows="10" class="form-control"></textarea>
+            </div>
 
 
 

@@ -9,6 +9,8 @@ if (isset($_GET['id'])) {
         $drug_name         = escape_string($row['drug_name']);
         $drug_short_desc   = escape_string($row['drug_short_description']);
         $drug_description  = escape_string($row['drug_description']);
+        $howtouse  = escape_string($row['howtouse']);
+        $precautions  = escape_string($row['precautions']);
         $drug_price        = escape_string($row['drug_price']);
         $drug_quantity     = escape_string($row['drug_quantity']);
         $drug_category_id  = escape_string($row['drug_category_id']);
@@ -56,6 +58,14 @@ if (isset($_GET['id'])) {
             <div class="form-group">
                 <label for="product-title">Drug Description</label>
                 <textarea name="drug_description" id="" cols="30" rows="10" class="form-control"><?php echo $drug_description; ?></textarea>
+            </div>
+            <div class="form-group">
+                <label for="product-title">How to use</label>
+                <textarea name="howtouse" id="" cols="30" rows="10" class="form-control"><?php echo $howtouse; ?></textarea>
+            </div>
+            <div class="form-group">
+                <label for="product-title">Precautions</label>
+                <textarea name="precautions" id="" cols="30" rows="10" class="form-control"><?php echo $precautions; ?></textarea>
             </div>
 
 

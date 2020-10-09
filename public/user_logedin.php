@@ -1,6 +1,6 @@
 <?php require_once("../resources/config.php"); ?>
 
-<?php include("../resources/tamplates/front/header.php") ?>
+<?php include("../resources/tamplates/front/user_header.php") ?>
 
 
 
