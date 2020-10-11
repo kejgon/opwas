@@ -34,6 +34,7 @@
                 <li>
                     <a href="contact.php">Contact</a>
                 </li>
+
                 <form method="POST" class="navbar-form navbar-left" action="search.php">
                     <div class="input-group">
                         <input type="text" class="form-control" id="navbar-search-input" name="keyword" placeholder="Search ... " required>

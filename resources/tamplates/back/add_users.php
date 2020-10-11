@@ -47,6 +47,14 @@
         </div>
 
         <div class="form-group">
+            <label for="userType">User Type</label>
+            <select name="user_type" class="form-control">
+                <option value="admin">admin</option>
+                <option value="pharmacist">pharmacist</option>
+            </select>
+        </div>
+
+        <div class="form-group">
 
             <!-- <a id="user-id" class="btn btn-danger" href="">Delete</a> -->
 

@@ -22,39 +22,52 @@
 <div class="container main-content">
 
     <div class="row">
-        <div class="col-md-4">
-            <h2>account details</h2>
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav side-nav">
+        <div class="col-sm-3">
+            <div class="panel panel-default">
+                <div class="list-group">
 
-                    <li>
-                        <a href="index.php?orders"> <i class="fa fa-shopping-cart"></i> Orders</a>
-                    </li>
-                    <li>
-                        <a href="index.php?reports"> <i class="fa fa-shopping-cart"></i> update details</a>
-                    </li>
-                    <li>
-                        <a href="index.php?drugs"><i class="fa fa-fw fa-bar-chart-o"></i>address</a>
-                    </li>
+                    <a href="#" class="list-group-item">Account details</a>
+                    <a href="#" class="list-group-item">Update account</a>
+                    <a href="#" class="list-group-item">Orders</a>
+
+                </div>
+            </div>
 
 
-                </ul>
+        </div>
+        <!--/col-3-->
+        <div class="col-sm-9">
+            <div class="panel panel-default">
+                <div class="panel-heading">Account Overview</div>
+                <div class="panel-body ">
+
+                    <p class="list-group-item">Account Full Name </p>
+                    <p class="list-group-item">State</p>
+                    <p class="list-group-item">Street</p>
+
+
+                </div>
             </div>
 
         </div>
 
 
-        <div class="col-md-8">
-
-        </div>
-
-
-
+        <div id="push"></div>
     </div>
 </div>
 
 
 
+
+<!--swiper slider-->
+<div class="container">
+
+    <div class="slider">
+
+        <?php get_Drugs(); ?>
+    </div>
+
+</div>
 
 
 <!-- /.container -->

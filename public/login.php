@@ -24,6 +24,17 @@
                     <input type="password" name="password" class="form-control" placeholder="Password"></label>
             </div>
 
+            <div class="form-group"><label for="user_role">User Role</label><br>
+                Admin <input type="radio" name="user_role" value="admin">&nbsp; &nbsp;
+                Pharmacist
+                <input type="radio" name="user_role" value="pharmacist">
+
+                <!-- <select name="user_role" class="form-control">
+                    <option value="admin">admin</option>
+                    <option value="pharmacist">pharmacist</option>
+                </select> -->
+            </div>
+
             <div class="form-group">
                 <input type="submit" name="submit" class="btn btn-primary">
             </div>

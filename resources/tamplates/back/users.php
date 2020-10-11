@@ -20,8 +20,8 @@
                     <th>Id</th>
                     <!-- <th>Photo</th> -->
                     <th>Username</th>
-                    <th>User Password</th>
                     <th>User Email</th>
+                    <th>User Type</th>
                     <th>Delete</th>
                     <th>Edit</th>
 

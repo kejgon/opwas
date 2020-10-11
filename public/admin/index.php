@@ -10,7 +10,7 @@
 <?php
 
 // SETTING USERS ACCORDING TO CONDITIONS
-if (!isset($_SESSION['username'])) {
+if (!isset($_SESSION['username']) || $_SESSION['user_role'] != "admin") {
 
     redirect("../../public");
 }

@@ -331,18 +331,36 @@ function login_User()
     if (isset($_POST['submit'])) {
         $username =  escape_string($_POST['username']);
         $password =  escape_string($_POST['password']);
+        $user_role = escape_string($_POST['user_role']);
 
-        $query = query("SELECT * FROM users WHERE user_name = '{$username}' AND user_password = '{$password}'");
+
+
+        $query = query("SELECT * FROM users WHERE user_name = '{$username}' AND user_type='{$user_role}'");
         confirm($query);
 
         if (mysqli_num_rows($query) == 0) {
+
             set_Message("Your username or  password are incorrect!");
             redirect("login.php");
         } else {
 
-            $_SESSION['username'] = $username;
-            //set_Message("Welcome to Admin panel" . $username);
-            redirect("admin");
+            $row = mysqli_fetch_array($query);
+            if (password_verify($password, $row['user_password'])) {
+
+                // $_SESSION['username'] = $username;
+                // //set_Message("Welcome to Admin panel" . $username);
+                // redirect("admin");
+
+                session_regenerate_id();
+                $_SESSION['username'] = $row['user_name'];
+                $_SESSION['user_role'] = $row['user_type'];
+                session_write_close();
+                if ($_SESSION['user_role'] == "admin") {
+                    redirect("admin");
+                } else if ($_SESSION['user_role'] == "pharmacist") {
+                    redirect("pharmacist");
+                }
+            }
         }
     }
 }
@@ -573,15 +591,16 @@ function display_users()
     while ($row = fetch_Array($query)) {
         $user_id = $row['user_id'];
         $user_name = $row['user_name'];
-        $user_password = $row['user_password'];
         $user_email = $row['user_email'];
+        $user_type = $row['user_type'];
+
 
         $categories = <<<HEREDOC
         <tr>
            <td>{$user_id}</td>
            <td>{$user_name}</td>
-           <td>{$user_password}</td>
            <td>{$user_email}</td>
+           <td>{$user_type}</td>
            <td><a class="btn btn-danger" href="../../resources/tamplates/back/delete_user.php?id={$row['user_id']}"><span class="glyphicon glyphicon-remove"></span></td>
            <td><a class="btn btn-warn" href="index.php?edit_users&id={$row['user_id']}"><span class="glyphicon glyphicon-edit"></span></td>
            </tr>
@@ -597,17 +616,20 @@ function add_Users()
 
         $user_name         = escape_string($_POST['username']);
         $user_email        = escape_string($_POST['email']);
+        $user_type         = escape_string($_POST['user_type']);
         $user_password     = escape_string($_POST['password']);
+        $encrypt_Password  = password_hash($user_password, PASSWORD_DEFAULT);
 
         if (
             (empty($user_name) || $user_name == " ")
             && (empty($user_email) || $user_email == " ")
             && (empty($user_password) || $user_password == " ")
+            && (empty($user_type) || $user_type == " ")
         ) {
             echo "<p class='bg-danger'>Please fill in the field</p>";
         } else {
 
-            $inert_users = query("INSERT INTO users(user_name, user_password, user_email) VALUES('{$user_name}','{$user_password}','{$user_email}')");
+            $inert_users = query("INSERT INTO users(user_name, user_password, user_email, user_type) VALUES('{$user_name}','{$encrypt_Password}','{$user_email}','{$user_type}')");
             confirm($inert_users);
             set_Message("A new users have been Added!");
             redirect("index.php?users");

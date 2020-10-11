@@ -421,3 +421,17 @@ a.list-group-item:hover{
   font-size: 15px;
 } */
 
+.panel-body{
+  text-align: left;
+  font-size: 1rem;
+  border: none;
+
+}
+.list-group{
+  text-align: left;
+  font-size: 1rem;
+}
+.panel-heading{
+  border: none;
+}
+
