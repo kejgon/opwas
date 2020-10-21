@@ -55,7 +55,7 @@
                                     <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email Address" value="">
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" name="phone" id="phone" tabindex="2" class="form-control" placeholder="Phone number">
+                                    <input type="text" name="phone" id="phone" tabindex="2" class="form-control" placeholder="Phone number">
                                 </div>
                                 <div class="form-group">
                                     <input type="password" name="password" id="confirm-password" tabindex="2" class="form-control" placeholder="Password">

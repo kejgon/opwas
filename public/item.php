@@ -65,7 +65,7 @@
 
         <!--Row for Tab Panel-->
 
-        <div class="container">
+        <div class="container" style="padding: 100px;">
 
             <div role="tabpanel">
 

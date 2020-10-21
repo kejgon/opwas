@@ -99,6 +99,389 @@ function get_Drugs()
     }
 }
 
+////? CUSTOMER //////////////////////////////////////
+
+////** ///////////////////sign$SignUp///////////////////  **////
+
+function customer_registration()
+{
+
+    if (isset($_POST['register-submit'])) {
+
+        $customer_name         = escape_string($_POST['fname']);
+        $customer_email   = escape_string($_POST['email']);
+        $custome_phone  = escape_string($_POST['phone']);
+        $customer_password        = escape_string($_POST['password']);
+        $encrypt_Password  = password_hash($customer_password, PASSWORD_DEFAULT);
+
+
+        if (
+            (empty($customer_name) || $customer_name == " ")
+            && (empty($customer_email) || $customer_email == " ")
+            && (empty($custome_phone) || $custome_phone == " ")
+            && (empty($customer_password) || $customer_password == " ")
+        ) {
+            echo "<p class='bg-danger'>Please fill in the field</p>";
+        } else {
+
+
+            $register = query("INSERT INTO customer(customer_name, customer_email, customer_phone, customer_password) VALUES('{$customer_name}','{$customer_email}','{$custome_phone}','{$encrypt_Password}')");
+            confirm($register);
+            set_Message("Registerd successfully ");
+            redirect("signin.php");
+        }
+    }
+}
+
+function customer_login()
+{
+
+    if (isset($_POST['login-submit'])) {
+        $customer_name =  escape_string($_POST['fname']);
+        $customer_password =  escape_string($_POST['password']);
+
+        $query = query("SELECT * FROM customer WHERE customer_name = '{$customer_name}'");
+        confirm($query);
+
+        if (mysqli_num_rows($query) == 0) {
+            set_Message("Your username or  password are incorrect!");
+            redirect("signin.php");
+        } else {
+
+            // $_SESSION['customer_name'] = $customer_name;
+            // //set_Message("Welcome to Admin panel" . $username);
+            // redirect("customer");
+
+            $row = mysqli_fetch_array($query);
+            if (password_verify($customer_password, $row['customer_password'])) {
+
+
+                $_SESSION['customer_name'] = $customer_name;
+                //set_Message("Welcome to Admin panel" . $username);
+                redirect("customer");
+            }
+        }
+    }
+}
+
+
+function customer_Details()
+{
+    $query = query("SELECT * FROM customer WHERE customer_name = '{$_SESSION['customer_name']}'; ");
+    confirm($query);
+    $row = fetch_Array($query);
+    $profile = <<<HEREDOC
+         <div class="panel-body ">
+                    <p class="list-group-item">Userame : {$row['customer_name']} </p>
+                    <p class="list-group-item">Email : {$row['customer_email']}</p>
+                    <p class="list-group-item">Phone : {$row['customer_phone']}</p>
+                </div>
+    HEREDOC;
+    echo $profile;
+}
+
+function update_customer_details()
+{
+    if (isset($_POST['cust_save'])) {
+
+        $customer_name        = escape_string($_POST['customer_name']);
+        $customer_phone       = escape_string($_POST['customer_phone']);
+        $customer_address    = escape_string($_POST['customer_address']);
+
+
+
+        $update_customer_query = "UPDATE customer SET ";
+        $update_customer_query .= "customer_name         = '{$customer_name}'        , ";
+        $update_customer_query .= "customer_phone     = '{$customer_phone}'    , ";
+        $update_customer_query .= "customer_address        = '{$customer_address}'         ";
+        $update_customer_query .= "WHERE customer_name =" . $_SESSION['customer_name'];
+
+        confirm(query($update_customer_query));
+
+        set_Message("Your details have been updated!!");
+        redirect("update_account.php");
+    }
+}
+
+function get_Drug_Category_customer()
+{
+
+    $query = query("SELECT * FROM drugs WHERE drug_category_id = " . escape_string($_GET['id']) . " ");
+    confirm($query);
+
+
+    if (mysqli_num_rows($query) > 0) {
+        while ($row = fetch_Array($query)) {
+
+            $drugs_Cat = <<<HEREDOC
+            <div class="col-lg-4 col-md-4 col-sm-4">
+            <div class="swiper-slide">
+                <div class="slider-box">
+                    <div class="img-box">
+                        <img src="../../resources/uploads/{$row['drug_image']}">
+                    </div>
+                    <p class="detail"><a href="item.php?id={$row['drug_id']}">{$row['drug_name']}</a>
+                        <a href="#" class="price">Ksh {$row['drug_price']}</a>
+                    </p>
+                    <div class="cart">
+                        <a href="../../resources/cart.php?add={$row['drug_id']}">Add To Cart</a>
+                    </div>
+                </div>
+            </div>
+            </div>
+            HEREDOC;
+            echo $drugs_Cat;
+        }
+    } else {
+        echo "<div class='container'> 
+        <h2>Sorry! These category is out of stocks</h2>
+        
+        </div>";
+    }
+}
+
+function search_all_drugs_customer()
+{
+
+    if (isset($_POST['search'])) {
+        $search = $_POST['keyword'];
+        $search = preg_replace("#[^0-9a-z]#i", "", $search);
+
+        $query = query("SELECT * FROM drugs WHERE drug_name LIKE '%$search%' OR drug_short_description LIKE '%$search%'");
+        confirm($query);
+
+        $count = mysqli_num_rows($query);
+
+        if ($count == 0) {
+            echo "<h1>
+            Sorry the drug is not avaiable!
+            </h1>
+            <p>Please contact our pharmacist!!</p>
+            ";
+        } else {
+
+            while ($row = fetch_Array($query)) {
+
+                $drugs = <<<DElIMETER
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                <div class="swiper-slide">
+                    <div class="slider-box">
+                        <div class="img-box">
+                            <img src="../../resources/uploads/{$row['drug_image']}">
+                        </div>
+                        <p class="detail"><a href="item.php?id={$row['drug_id']}">{$row['drug_name']}</a>
+                            <a href="#" class="price">Ksh {$row['drug_price']}</a>
+                        </p>
+                        <div class="cart">
+                            <a href="../../resources/cart.php?add={$row['drug_id']}">Add To Cart</a>
+                        </div>
+                </div>
+                </div>
+                </div>
+                DElIMETER;
+                echo $drugs;
+            }
+        }
+    }
+}
+function get_Drugs_in_customer()
+{
+
+    $query = query("SELECT * FROM drugs");
+    confirm($query);
+
+    while ($row = fetch_Array($query)) {
+
+
+        $drugs = <<<HEREDOC
+        <div class="swiper-slide">
+            <div class="slider-box">
+                <div class="img-box">
+                    <img src="../../resources/uploads/{$row['drug_image']}">
+                </div>
+                <p class="detail"><a href="item.php?id={$row['drug_id']}">{$row['drug_name']}</a>
+                    <a href="#" class="price">Ksh {$row['drug_price']}</a>
+                </p>
+                <div class="cart">
+                    <a href="../../resources/cart.php?add={$row['drug_id']}">Add To Cart</a>
+                </div>
+            </div>
+        </div>
+        HEREDOC;
+        echo $drugs;
+    }
+}
+
+function get_Drugs_In_Shop_customer()
+{
+
+    $query = query("SELECT * FROM drugs");
+    confirm($query);
+
+
+    //Pagaination process
+    $rows = mysqli_num_rows($query); // Get total of mumber of rows from the database
+
+
+    if (isset($_GET['page'])) { //get page from URL if its there
+
+        $page = preg_replace('#[^0-9]#', '', $_GET['page']); //filter everything but numbers
+
+
+
+    } else { // If the page url variable is not present force it to be number 1
+
+        $page = 1;
+    }
+
+
+    $perPage = 6; // Items per page here 
+
+    $lastPage = ceil($rows / $perPage); // Get the value of the last page
+
+
+    // Be sure URL variable $page(page number) is no lower than page 1 and no higher than $lastpage
+
+    if ($page < 1) { // If it is less than 1
+
+        $page = 1; // force if to be 1
+
+    } elseif ($page > $lastPage) { // if it is greater than $lastpage
+
+        $page = $lastPage; // force it to be $lastpage's value
+
+    }
+
+
+
+    $middleNumbers = ''; // Initialize this variable
+
+    // This creates the numbers to click in between the next and back buttons
+
+
+    $sub1 = $page - 1;
+    $sub2 = $page - 2;
+    $add1 = $page + 1;
+    $add2 = $page + 2;
+
+
+
+    if ($page == 1) {
+
+        $middleNumbers .= '<li class="page-item active"><a>' . $page . '</a></li>';
+
+        $middleNumbers .= '<li class="page-item"><a class="page-link" href="' . $_SERVER['PHP_SELF'] . '?page=' . $add1 . '">' . $add1 . '</a></li>';
+    } elseif ($page == $lastPage) {
+
+        $middleNumbers .= '<li class="page-item"><a class="page-link" href="' . $_SERVER['PHP_SELF'] . '?page=' . $sub1 . '">' . $sub1 . '</a></li>';
+        $middleNumbers .= '<li class="page-item active"><a>' . $page . '</a></li>';
+    } elseif ($page > 2 && $page < ($lastPage - 1)) {
+
+        $middleNumbers .= '<li class="page-item"><a class="page-link" href="' . $_SERVER['PHP_SELF'] . '?page=' . $sub2 . '">' . $sub2 . '</a></li>';
+
+        $middleNumbers .= '<li class="page-item"><a class="page-link" href="' . $_SERVER['PHP_SELF'] . '?page=' . $sub1 . '">' . $sub1 . '</a></li>';
+
+        $middleNumbers .= '<li class="page-item active"><a>' . $page . '</a></li>';
+
+        $middleNumbers .= '<li class="page-item"><a class="page-link" href="' . $_SERVER['PHP_SELF'] . '?page=' . $add1 . '">' . $add1 . '</a></li>';
+
+        $middleNumbers .= '<li class="page-item"><a class="page-link" href="' . $_SERVER['PHP_SELF'] . '?page=' . $add2 . '">' . $add2 . '</a></li>';
+    } elseif ($page > 1 && $page < $lastPage) {
+
+        $middleNumbers .= '<li class="page-item"><a class="page-link" href="' . $_SERVER['PHP_SELF'] . '?page= ' . $sub1 . '">' . $sub1 . '</a></li>';
+
+        $middleNumbers .= '<li class="page-item active"><a>' . $page . '</a></li>';
+
+        $middleNumbers .= '<li class="page-item"><a class="page-link" href="' . $_SERVER['PHP_SELF'] . '?page=' . $add1 . '">' . $add1 . '</a></li>';
+    }
+
+
+    // This line sets the "LIMIT" range... the 2 values we place to choose a range of rows from database in our query
+
+
+    $limit = 'LIMIT ' . ($page - 1) * $perPage . ',' . $perPage;
+
+
+
+
+    // $query2 is what we will use to to display products with out $limit variable
+
+    $query2 = query(" SELECT * FROM drugs $limit");
+    confirm($query2);
+
+
+    $outputPagination = ""; // Initialize the pagination output variable
+
+
+    // if($lastPage != 1){
+
+    //    echo "Page $page of $lastPage";
+
+
+    // }
+
+
+    // If we are not on page one we place the back link
+
+    if ($page != 1) {
+
+
+        $prev  = $page - 1;
+
+        $outputPagination .= '<li class="page-item"><a class="page-link" href="' . $_SERVER['PHP_SELF'] . '?page=' . $prev . '">Back</a></li>';
+    }
+
+    // Lets append all our links to this variable that we can use this output pagination
+
+    $outputPagination .= $middleNumbers;
+
+
+    // If we are not on the very last page we the place the next link
+
+    if ($page != $lastPage) {
+
+
+        $next = $page + 1;
+
+        $outputPagination .= '<li class="page-item"><a class="page-link" href="' . $_SERVER['PHP_SELF'] . '?page=' . $next . '">Next</a></li>';
+    }
+
+
+
+
+
+
+    while ($row = fetch_Array($query2)) {
+
+        $drugs = <<<HEREDOC
+        <div class="col-lg-4 col-md-4 col-sm-4">
+        <div class="swiper-slide">
+            <div class="slider-box">
+                <div class="img-box">
+                    <img src="../../resources/uploads/{$row['drug_image']}">
+                </div>
+                <p class="detail"><a href="item.php?id={$row['drug_id']}">{$row['drug_name']}</a>
+                    <a href="#" class="price">Ksh {$row['drug_price']}</a>
+                </p>
+                <div class="cart">
+                    <a href="../../resources/cart.php?add={$row['drug_id']}">Add To Cart</a>
+                </div>
+        </div>
+        </div>
+        </div>
+        HEREDOC;
+        echo $drugs;
+    }
+    echo "
+    <div class'fuild-container' style='clear:both'>
+    <div class='text-center'><ul class='pagination'>{$outputPagination}</ul></div>
+    </div>
+    ";
+}
+
+
+
+
 
 function get_Categories()
 {
@@ -289,10 +672,6 @@ function get_Drugs_In_Shop()
     }
 
 
-
-
-
-
     while ($row = fetch_Array($query2)) {
 
         $drugs = <<<HEREDOC
@@ -340,7 +719,7 @@ function login_User()
 
         if (mysqli_num_rows($query) == 0) {
 
-            set_Message("Your username or  password are incorrect!");
+            set_Message("Your username or  password or user role are incorrect!");
             redirect("login.php");
         } else {
 
@@ -737,46 +1116,6 @@ function search_all_drugs()
 }
 
 
-////** ///////////////////sign$SignUp///////////////////  **////
-
-function customer_registration()
-{
-
-    if (isset($_POST['register-submit'])) {
-
-        $customer_name         = escape_string($_POST['fname']);
-        $customer_email   = escape_string($_POST['email']);
-        $custome_phone  = escape_string($_POST['phone']);
-        $customer_password        = escape_string($_POST['password']);
-
-        $register = query("INSERT INTO customer(customer_name, customer_email, customer_phone, customer_password) VALUES('{$customer_name}','{$customer_email}','{$custome_phone}','{$customer_password}')");
-        confirm($register);
-        set_Message("Registerd successfully ");
-        redirect("signin.php");
-    }
-}
-
-function customer_login()
-{
-
-    if (isset($_POST['login-submit'])) {
-        $customer_name =  escape_string($_POST['fname']);
-        $customer_password =  escape_string($_POST['password']);
-
-        $query = query("SELECT * FROM customer WHERE customer_name = '{$customer_name}' AND customer_password = '{$customer_password}'");
-        confirm($query);
-
-        if (mysqli_num_rows($query) == 0) {
-            set_Message("Your username or  password are incorrect!");
-            redirect("signin.php");
-        } else {
-
-            $_SESSION['customer_name'] = $customer_name;
-            //set_Message("Welcome to Admin panel" . $username);
-            redirect("user_logedin.php");
-        }
-    }
-}
 
 
 
@@ -802,5 +1141,28 @@ function contact_message()
         $message = query("INSERT INTO messages(full_name, subjects,mailFrom, messages) VALUE('{$full_name}','{$subjects}','{$mailFrom}','{$message}')");
         confirm($message);
         set_Message("Your message sent successfully");
+    }
+}
+
+//??******************* display MSG *********************??/
+function display_Messages()
+{
+    $query = query("SELECT * FROM messages");
+    confirm($query);
+
+    while ($row = fetch_Array($query)) {
+
+        $msg = <<<HEREDOC
+        <tr>
+            <td>{$row['msg_id']}</td>
+            <td>{$row['full_name']}</td>
+            <td>{$row['subjects']}</td>
+            <td>{$row['mailFrom']}</td>
+            <td>{$row['messages']}</td>
+            <td>{$row['msg_date']}</td>
+        </tr>
+        HEREDOC;
+
+        echo $msg;
     }
 }

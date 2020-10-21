@@ -5,7 +5,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="index.php"><img src="img/icons/icons8-hand-with-a-pill-100.png" width="50">OPWAS <?php //echo $_SESSION['user_type']; 
+    <a class="navbar-brand" href="index.php"><img src="img/icons/icons8-hand-with-a-pill-100.png" width="50">OPWAS <?php echo $_SESSION['user_role'];
                                                                                                                     ?></a>
 </div>
 

@@ -18,7 +18,6 @@
         <div class="container">
             <div class="row text-center">
                 <h1>Pharmacy</h1>
-                <h3>Welcome</h3>
             </div>
         </div>
     </div>
