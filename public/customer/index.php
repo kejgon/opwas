@@ -34,26 +34,9 @@ if (!isset($_SESSION['customer_name'])) {
 
 
 
-<!-- CAREDS SLIDER ------>
-
-
-
-<!-- CAREDS SLIDER -->
-
-
-
-<!-- /.container -->
-
-
-
-
-
-
 <!--swiper slider-->
 <div class="fuild-container">
-
     <div class="slider">
-
         <?php get_Drugs_in_customer(); ?>
     </div>
 
@@ -62,38 +45,30 @@ if (!isset($_SESSION['customer_name'])) {
 
 <!---- SERVICES------>
 
-<div class="fuild-container" id="full-features">
-    <div class="container" id="features">
-        <div class="row">
+<div class="fuild-container">
+    <div class="container">
+        <div class="row mx-3" id="features">
+            <div class="col-md-4 px-4 mb-4">
 
-            <div class=" features-box col-md-3">
-                <div class="box-f">
-                    <p class="text-center">
-                        Search for your medication online by name or condition. You can also call</p>
-                </div>
+                <a href="#" class="thumbnail">
+                    <img src="../../public/img/shopping-cart-colour-thumbnail.png" class="img-fluid" alt="smaple image">
+                </a>
+
             </div>
+            <div class="col-md-4 px-4 mb-4">
 
+                <a href="#" class="thumbnail">
+                    <img src="../../public/img/thumbnail.png" class="img-fluid" alt="smaple image">
+                </a>
 
-            <div class="features-box col-md-3">
-                <div class="box-f">
-                    <p class="text-center">
-                        Place your order online or by phone or by live chat.</p>
-                </div>
             </div>
+            <div class="col-md-4 px-4 mb-4">
 
+                <a href="#" class="thumbnail">
+                    <img src="../../public/img/shipping-package-colour-thumbnail.png" class="img-fluid" alt="smaple image">
+                </a>
 
-            <div class="features-box col-md-3">
-                <div class="box-f">
-                    <p class="text-center">Send us your (Rx) prescription to process your order.</p>
-                </div>
             </div>
-
-            <div class="features-box col-md-3">
-                <div class="box-f">
-                    <p class="text-center">Order complete! wait for your the medication to be delivered.</p>
-                </div>
-            </div>
-
         </div>
 
     </div>
@@ -101,21 +76,6 @@ if (!isset($_SESSION['customer_name'])) {
 
 
 
-<div class="fuild-container infos">
-    <div class="row">
-        <div class="col-md-6">
-            <h2>Contact: 07000000000</h2>
 
-        </div>
-        <div class="col-md-6">
-            <h2>Email:opwas@gmail.com</h2>
-
-        </div>
-
-    </div>
-</div>
 <!--- FOOTER---->
 <?php include("footer.php") ?>
-
-<?php //include(TEMPLATE_FRONT . DS . "footer.php") 
-?>

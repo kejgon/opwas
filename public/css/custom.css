@@ -255,6 +255,7 @@ padding: 50px;
 }
 #features{
   margin: 0 auto;
+  padding-bottom: 100px;
 
 }
   .box-f:hover{
@@ -311,14 +312,13 @@ padding: 50px;
 	background-image: -ms-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
 	background-image: -o-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
 }
-.panel-login input[type="text"],.panel-login input[type="email"],.panel-login input[type="password"] {
+/* .panel-login input[type="text"],.panel-login input[type="email"],.panel-login input[type="password"] {
 	height: 45px;
-	border: 1px solid #ddd;
 	font-size: 16px;
 	-webkit-transition: all 0.1s linear;
 	-moz-transition: all 0.1s linear;
 	transition: all 0.1s linear;
-}
+} */
 .panel-login input:hover,
 .panel-login input:focus {
 	outline:none;
@@ -343,15 +343,7 @@ padding: 50px;
 	color: #fff;
 	background-color: #04aff3;
 }
-.forgot-password {
-	text-decoration: underline;
-	color: #888;
-}
-.forgot-password:hover,
-.forgot-password:focus {
-	text-decoration: underline;
-	color: #666;
-}
+
 
 .btn-register {
 	background-color: #6dd5ed;
@@ -399,7 +391,7 @@ a.list-group-item:hover{
 
 /* width */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 15px;
   visibility: hidden
 }
 
@@ -435,3 +427,48 @@ a.list-group-item:hover{
   border: none;
 }
 
+
+
+.shop{
+  padding-bottom: 100px;
+}
+
+.footer {
+  /* position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%; */
+  height: 150px;
+  padding: 1rem;
+  background: #152f4f;
+  color: white;
+}
+.footer .links ul {
+  list-style-type: none;
+}
+.footer .links li a {
+  color: white;
+  -webkit-transition: color 0.2s;
+  transition: color 0.2s;
+}
+.footer .links li a:hover {
+  text-decoration: none;
+  color: #4180cb;
+}
+.footer .about-company i {
+  font-size: 25px;
+}
+.footer .about-company a {
+  color: white;
+  -webkit-transition: color 0.2s;
+  transition: color 0.2s;
+}
+.footer .about-company a:hover {
+  color: #4180cb;
+}
+.footer .location i {
+  font-size: 18px;
+}
+.footer .copyright p {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}

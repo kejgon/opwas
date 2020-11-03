@@ -8,7 +8,7 @@
 
 
 body{
-  background-color: #2ABAF7;
+  background-color: #fff;
   /* background-image: linear-gradient(180deg,#2ABAF7 10%,#3557bd 150%);
   background-size: cover; */
 }
@@ -33,6 +33,7 @@ body{
 .navbar-inverse .navbar-nav>li>a {
   margin-bottom: 10px;
 
+
 }
 .side-nav>li>a:hover {
   background-color: #15a8e7;
@@ -49,13 +50,15 @@ body{
 
 }
 .side-nav{
-  background-color: #2ABAF7;
-  background-image: linear-gradient(180deg,#2ABAF7 100%,#3557bd 150%);
-  background-size: cover;
+  background-color: #fff;
+font-size: 18px;
   margin-top: 10px;
+ 
+
+
 }
 .navbar-inverse .navbar-nav>li>a {
-  color: #fff;
+  color: #ccc;
 }
 
 
@@ -90,6 +93,9 @@ body{
 
 }
 
+#wrapper{
+  background-color: #fff;
+}
 
 
 #page-wrapper {

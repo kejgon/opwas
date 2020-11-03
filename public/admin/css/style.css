@@ -8,7 +8,7 @@
 
 
 body{
-  background-color: #2ABAF7;
+  background-color: #fff;
   /* background-image: linear-gradient(180deg,#2ABAF7 10%,#3557bd 150%);
   background-size: cover; */
 }
@@ -49,13 +49,15 @@ body{
 
 }
 .side-nav{
-  background-color: #2ABAF7;
-  background-image: linear-gradient(180deg,#2ABAF7 100%,#3557bd 150%);
-  background-size: cover;
+  background-color: #fff;
+  font-size: 18px;
   margin-top: 10px;
 }
 .navbar-inverse .navbar-nav>li>a {
-  color: #fff;
+  color: #ccc;
+}
+#wrapper{
+  background-color: #fff;
 }
 
 

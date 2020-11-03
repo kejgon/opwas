@@ -23,13 +23,6 @@ if (isset($_SESSION['customer_name'])) {
 
 
 
-
-
-
-
-
-
-
 <!-- Contact Section -->
 
 <div class="container main-content">
@@ -94,8 +87,6 @@ if (isset($_SESSION['customer_name'])) {
             </div>
 
         </div>
-
-
         <div id="push"></div>
     </div>
 </div>
@@ -105,15 +96,12 @@ if (isset($_SESSION['customer_name'])) {
 
 <!--swiper slider-->
 <div class="container">
-
     <div class="slider">
-
         <?php get_Drugs_in_customer(); ?>
     </div>
 
 </div>
 
 
-<!-- /.container -->
 <!--- FOOTER---->
 <?php include("footer.php") ?>

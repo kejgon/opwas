@@ -1,7 +1,6 @@
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
-
             <a class="navbar-brand" href="index.php">OPWAS</a>
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
                 <i class="fa fa-bars"></i>
@@ -10,7 +9,6 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -43,21 +41,13 @@
                         </span>
                     </div>
                 </form>
-
-
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="signin.php"><span class=""></span> Login</a></li>
             </ul>
 
-
-
-
-
         </div>
-
-
     </div>
 </nav>
 

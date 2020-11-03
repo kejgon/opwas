@@ -9,16 +9,6 @@
 
 
 
-
-
-
-
-
-
-
-
-<!-- Contact Section -->
-
 <div class="container main-content">
 
     <div class="row">
@@ -32,8 +22,6 @@
 
                 </div>
             </div>
-
-
         </div>
         <!--/col-3-->
         <div class="col-sm-9">
@@ -41,10 +29,7 @@
                 <div class="panel-heading">Account Overview</div>
                 <?php customer_Details(); ?>
             </div>
-
         </div>
-
-
         <div id="push"></div>
     </div>
 </div>
@@ -54,12 +39,9 @@
 
 <!--swiper slider-->
 <div class="container">
-
     <div class="slider">
-
         <?php get_Drugs_in_customer(); ?>
     </div>
-
 </div>
 
 

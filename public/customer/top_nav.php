@@ -50,22 +50,10 @@
                         <ul class="dropdown-menu" role="menu">
                             <a href='user_account.php' class='list-group-item'>Account</a>
                             <a href='logout.php' class='list-group-item'>Logout</a>
-
-
-
                         </ul>
-
                 </ul>
             </ul>
-
-
-
-
-
-
         </div>
-
-
     </div>
 </nav>
 

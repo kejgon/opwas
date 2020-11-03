@@ -21,14 +21,12 @@ if (isset($_GET['add'])) {
 
 
     // $_SESSION['drug_' . $_GET['add']] += 1;
-
     // redirect("index.php");
 }
 
 
 ////! removing a drug from a cart
 if (isset($_GET['remove'])) {
-
     $_SESSION['drug_' . $_GET['remove']]--;
     if ($_SESSION['drug_' . $_GET['remove']] < 1) {
         unset($_SESSION['item_total']);
@@ -43,7 +41,6 @@ if (isset($_GET['remove'])) {
 
 ////! delete a drug from a cart
 if (isset($_GET['delete'])) {
-
     $_SESSION['drug_' . $_GET['delete']] = '0';
     unset($_SESSION['item_total']);
     unset($_SESSION['item_quantity']);
@@ -154,11 +151,6 @@ function process_transaction()
         $amount =  $_GET['amt'];
         $currency =  $_GET['cc'];
         $status = $_GET['st'];
-
-
-
-
-
 
 
 

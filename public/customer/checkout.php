@@ -12,11 +12,7 @@
 <!-- Page Content -->
 
 <div class="container main-content">
-
-
-    <!-- /.row -->
-
-    <div class="row">
+    <div class="row" style="padding-bottom: 200px;">
         <p class="text-center bg-danger"><?php display_Message(); ?>
         </p>
         <h1>Checkout</h1>
@@ -52,9 +48,7 @@
 
         <div class="col-xs-4 pull-right ">
             <h2>Cart Totals</h2>
-
             <table class="table table-bordered" cellspacing="0">
-
                 <tr class="cart-subtotal">
                     <th>Items:</th>
                     <td><span class="amount">
@@ -75,37 +69,13 @@
                             </span></strong> </td>
                 </tr>
 
-
                 </tbody>
-
             </table>
-
         </div><!-- CART TOTALS-->
-
     </div>
 </div>
 
-<!--Main Content-->
 
-
-<div class="clearfix"></div>
-
-<div class="fuild-container infos">
-    <div class="row">
-        <div class="col-md-6">
-            <h2>Contact: 07000000000</h2>
-
-        </div>
-        <div class="col-md-6">
-            <h2>Email:opwas@gmail.com</h2>
-
-        </div>
-
-    </div>
-</div>
 
 <!--- FOOTER---->
 <?php include("footer.php") ?>
-
-<?php //include(TEMPLATE_FRONT . DS . "footer.php") 
-?>

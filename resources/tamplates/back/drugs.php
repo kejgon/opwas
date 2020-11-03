@@ -5,10 +5,7 @@
 
     </h1>
     <p class="text-center bg-success"><?php display_Message(); ?>
-
         <table class="table table-hover">
-
-
             <thead>
 
                 <tr>
@@ -23,15 +20,10 @@
                     <th>Precaution</th>
                     <th>Delete</th>
                     <th>Edit</th>
-
                 </tr>
             </thead>
             <tbody>
-
                 <?php display_all_drug(); ?>
-
-
-
             </tbody>
         </table>
 

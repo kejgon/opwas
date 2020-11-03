@@ -1,0 +1,102 @@
+
+
+:root {
+    --sucess-color: #15fa75;
+    --error-color: #e74e74;
+  }
+
+  form .success{
+    padding: 0; 
+    margin: 20px 0px
+
+  }
+  form .error {
+    color: #ff0000;
+    padding: 0;
+    margin-top: 20px
+  }
+
+  button, html input[type=button], input[type=reset], input[type=submit] {
+    -webkit-appearance: button;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    position: relative;
+}
+
+/* .form-control label {
+    color: #fff;
+    display: block;
+    margin-bottom: 5px;
+} */
+/* 
+.form-control input {
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 4px;
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    background-color: yellow;
+    color: #000;
+} */
+
+.form-control input:focus {
+    outline: 0;
+    border-color: #fff;
+    color: #000;
+}
+
+.form-control.success input {
+    border-color: var(--sucess-color);
+}
+
+.form-control.error input {
+    border-color: var(--error-color);
+    padding: 0;
+    margin: 0px 0px 20px 0p
+    
+}
+
+.form-control small {
+    color: var(--error-color);
+    position: relative;
+    bottom: 0;
+    left: 0;
+    visibility: hidden;
+}
+
+.form-control.error small {
+    visibility: visible;
+}
+
+/* .form button {
+    cursor: pointer;
+    border: 2px solid #3498db;
+    border-radius: 10px;
+    color: #fff;
+    display: block;
+    font-size: 18px;
+    padding: 15px;
+    margin-top: 20px;
+    width: 100%;
+    background: transparent;
+} */

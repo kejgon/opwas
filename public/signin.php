@@ -1,8 +1,6 @@
 <?php require_once("../resources/config.php"); ?>
 
 <?php include("../resources/tamplates/front/header.php") ?>
-<?php // include(TEMPLATE_FRONT . DS . "header.php") 
-?>
 
 
 
@@ -26,13 +24,13 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <form id="login-form" action="" method="post" role="form" style="display: block;">
-                                <p class="text-center bg-success"><?php display_Message(); ?></p>
+                                <p class="text-center bg-success" style="font-size: 16px;"><?php display_Message(); ?></p>
 
                                 <div class="form-group">
                                     <input type="text" name="fname" id="name" tabindex="1" class="form-control" placeholder="Name" value="">
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
+                                    <input type="password" name="password" id="logpassword" tabindex="2" class="form-control" placeholder="Password">
                                 </div>
 
                                 <div class="form-group">
@@ -46,24 +44,28 @@
 
                                 <?php customer_login() ?>
                             </form>
-                            <form id="register-form" action="signin.php" method="post" role="form" style="display: none;">
+                            <form id="register-form" action="signin.php" name="valForm" method="post" role="form" style="display: none;" onsubmit="return submitFormValidation();">
 
                                 <div class="form-group">
-                                    <input type="text" name="fname" id="fname" tabindex="1" class="form-control" placeholder="Full name" value="">
+                                    <input type="text" name="fname" id="fname" class="form-control" placeholder="Full name">
+                                    <small id="name_error"></small>
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email Address" value="">
+                                    <input type="email" name="email" id="email" class="form-control" placeholder="Email Address">
+                                    <small id="email_error"> </small>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" name="phone" id="phone" tabindex="2" class="form-control" placeholder="Phone number">
+                                    <input type="text" name="phone" id="phone" class="form-control" placeholder="Phone number">
+                                    <small id="phone_error"></small>
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" name="password" id="confirm-password" tabindex="2" class="form-control" placeholder="Password">
+                                    <input type="password" name="password" id="password" class="form-control" placeholder="Password">
+                                    <small id="password_error"> </small>
                                 </div>
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-sm-6 col-sm-offset-3">
-                                            <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Register Now">
+                                            <input type="submit" onclick=" " name="register-submit" id="register-submit" class="form-control btn btn-register" value="Register Now">
                                         </div>
                                     </div>
                                 </div>

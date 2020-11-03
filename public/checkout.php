@@ -5,10 +5,6 @@
 
 
 
-
-
-
-
 <!-- Page Content -->
 
 <div class="container main-content">
@@ -16,7 +12,7 @@
 
     <!-- /.row -->
 
-    <div class="row">
+    <div class="row" style="padding-bottom: 200px;">
         <p class="text-center bg-danger"><?php display_Message(); ?>
         </p>
         <h1>Checkout</h1>
@@ -37,7 +33,6 @@
                     </tr>
                 </thead>
                 <tbody>
-
 
                     <?php cart(); ?>
                 </tbody>
@@ -85,24 +80,7 @@
     </div>
 </div>
 
-<!--Main Content-->
 
-
-<div class="clearfix"></div>
-
-<div class="fuild-container infos">
-    <div class="row">
-        <div class="col-md-6">
-            <h2>Contact: 07000000000</h2>
-
-        </div>
-        <div class="col-md-6">
-            <h2>Email:opwas@gmail.com</h2>
-
-        </div>
-
-    </div>
-</div>
 
 <!--- FOOTER---->
 <?php include("../resources/tamplates/front/footer.php") ?>

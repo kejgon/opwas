@@ -24,59 +24,28 @@ if (isset($_GET['id'])) {
 </h1>
 
 <div class="col-md-6 user_image_box">
-
     <a href="#" data-toggle="modal" data-target="#photo-library"><img class="img-responsive" src="" alt=""></a>
-
 </div>
 
-
 <form action="" method="post" enctype="multipart/form-data">
-
-
-
-
     <div class="col-md-6">
-        <!-- 
-        <div class="form-group">
-
-            <input type="file" name="file">
-
-        </div> -->
-
-
         <div class="form-group">
             <label for="username">Username</label>
             <input type="text" name="username" class="form-control" value="<?php echo $user_name; ?>">
-
         </div>
-
-
         <div class="form-group">
             <label for="last name">Email</label>
             <input type="text" name="email" class="form-control" value="<?php echo $user_email; ?>">
-
         </div>
-
-
         <div class="form-group">
             <label for="password">Password</label>
             <input type="password" name="password" class="form-control" value="<?php echo $user_password; ?>">
-
         </div>
-
         <div class="form-group">
-
-
             <input type="submit" name="update_user" class="btn btn-primary pull-right" value="Update">
-
         </div>
 
         <?php update_users(); ?>
 
-
-
     </div>
-
-
-
 </form>

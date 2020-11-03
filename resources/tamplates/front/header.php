@@ -23,6 +23,8 @@
 
     <!-- Custom CSS -->
     <link href="css/shop-homepage.css" rel="stylesheet">
+    <link href="css/valid.css?v=<?php echo time(); ?>" rel="stylesheet">
+
 
     <link href="css/custom.css?v=<?php echo time(); ?>" rel="stylesheet">
     <link href="css/card-slider.css?v=<?php echo time(); ?>" rel="stylesheet">

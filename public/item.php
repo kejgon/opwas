@@ -9,24 +9,16 @@
 <!-- Page Content -->
 <div class="container">
 
-
-
     <?php
-
     $query = query("SELECT * FROM drugs WHERE drug_id = " . escape_string($_GET['id']) . " ");
     confirm($query);
     while ($row = fetch_Array($query)) :
 
-
-
     ?>
-
-
 
         <!--Row For Image and Short Description-->
 
         <div class="row">
-
             <div class="col-md-7">
                 <img class="img-responsive" src="../resources/uploads/<?php echo $row['drug_image'] ?>" width="200" height="300">
 
@@ -60,9 +52,6 @@
         </div>
         <!--Row For Image and Short Description-->
 
-
-
-
         <!--Row for Tab Panel-->
 
         <div class="container" style="padding: 100px;">
@@ -74,9 +63,6 @@
                     <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Description</a></li>
                     <li role="presentation"><a href="#how" aria-controls="home" role="tab" data-toggle="tab">How it use</a></li>
                     <li role="presentation"><a href="#precaution" aria-controls="home" role="tab" data-toggle="tab">Precautions</a></li>
-
-
-
                 </ul>
 
                 <!-- Tab panes -->
@@ -95,19 +81,8 @@
                     </div>
 
                 </div>
-
-
-
             </div>
-
-
-
         </div>
-
-
-
-
-        <!--Row for Tab Panel-->
 
         <!-- END OF THE WHILE LOOP-->
     <?php endwhile; ?>
@@ -115,29 +90,5 @@
 </div>
 
 
-
-
-
-
-
-
-
-<!-- /.container -->
-
-<div class="clearfix"></div>
-
-<div class="fuild-container infos">
-    <div class="row">
-        <div class="col-md-6">
-            <h2>Contact: 07000000000</h2>
-
-        </div>
-        <div class="col-md-6">
-            <h2>Email:opwas@gmail.com</h2>
-
-        </div>
-
-    </div>
-</div>
 <!-- /.FOOTER -->
 <?php include("../resources/tamplates/front/footer.php") ?>

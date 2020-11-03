@@ -37,24 +37,15 @@ if (isset($_GET['id'])) {
 
 
     <form method="POST" action="" enctype="multipart/form-data">
-
-
-
         <div class="col-md-8">
-
             <div class="form-group">
                 <label for="product-title">Drug Name </label>
                 <input type="text" name="drug_name" class="form-control" value="<?php echo $drug_name; ?>" />
-
             </div>
-
             <div class="form-group">
                 <label for="product-title">Drug Short Description</label>
                 <textarea name="drug_short_descr" id="" cols="15" rows="5" class="form-control"><?php echo $drug_short_desc; ?></textarea>
             </div>
-
-
-
             <div class="form-group">
                 <label for="product-title">Drug Description</label>
                 <textarea name="drug_description" id="" cols="30" rows="10" class="form-control"><?php echo $drug_description; ?></textarea>
@@ -68,10 +59,7 @@ if (isset($_GET['id'])) {
                 <textarea name="precautions" id="" cols="30" rows="10" class="form-control"><?php echo $precautions; ?></textarea>
             </div>
 
-
-
             <div class="form-group row">
-
                 <div class="col-xs-3">
                     <label for="product-price">Drug Price</label>
                     <input type="number" name="drug_price" class="form-control" size="60" value="<?php echo $drug_price; ?>">
@@ -81,19 +69,10 @@ if (isset($_GET['id'])) {
         <!--Main Content-->
 
 
-        <!-- SIDEBAR-->
-
-
         <aside id="admin_sidebar" class="col-md-4">
-
-
             <div class="form-group">
-                <input type="submit" name="draft" class="btn btn-warning btn-lg" value="Draft">
                 <input type="submit" name="update" class="btn btn-primary btn-lg" value="Update">
             </div>
-
-
-            <!-- Drug Categories-->
 
             <div class="form-group">
                 <label for="drug_category">Drug Category</label>
@@ -105,8 +84,6 @@ if (isset($_GET['id'])) {
 
                 </select>
             </div>
-
-
 
             <div class="form-group">
                 <label for="drug_quantity">Drug Quantity</label>
@@ -120,7 +97,6 @@ if (isset($_GET['id'])) {
                 <img src="../../resources/uploads/<?php echo $drug_image; ?>">
 
             </div>
-
 
             <?php update_Drugs(); ?>
 

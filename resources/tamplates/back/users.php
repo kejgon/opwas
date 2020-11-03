@@ -10,10 +10,7 @@
 
     <a href="index.php?add_users" class="btn btn-primary">Add User</a>
 
-
-
     <div class="col-md-12">
-
         <table class="table table-hover">
             <thead>
                 <tr>
@@ -29,18 +26,10 @@
             </thead>
             <tbody>
 
-
                 <?php display_users(); ?>
-
-
 
             </tbody>
         </table>
         <!--End of Table-->
-
-
     </div>
-
-
-
 </div>

@@ -25,9 +25,7 @@
 
 
                     <?php
-
                     display_Reports();
-
                     ?>
 
 
